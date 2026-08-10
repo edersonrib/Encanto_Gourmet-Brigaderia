@@ -1,0 +1,6 @@
+{
+  "name": "Encanto Gourmet | Brigadeiros Gourmet Artesanais",
+  "description": "Landing page artesanal e elegante para a marca Encanto Gourmet. Brigadeiros gourmet preparados com chocolate nobre e apresentação refinada.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
