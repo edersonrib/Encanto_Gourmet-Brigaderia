@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BRIGADEIRO_PRODUCTS } from '../data/products';
+import { fetchActiveProducts } from '../services/products';
 import { BrigadeiroProduct } from '../types';
 import { CustomBoxBuilder } from './CustomBoxBuilder';
-import { ShoppingBag, Sparkles, Gift, Info, Check, ArrowUpRight } from 'lucide-react';
+import { ShoppingBag, Gift, Info, RefreshCw } from 'lucide-react';
 
 interface ProductsProps {
   onSelectProductToOrder: (product: BrigadeiroProduct) => void;
@@ -13,6 +14,30 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
   const [activeTab, setActiveTab] = useState<'catalog' | 'box_builder'>('catalog');
   const [selectedCategory, setSelectedCategory] = useState<string>('todos');
   const [selectedProductForDetail, setSelectedProductForDetail] = useState<BrigadeiroProduct | null>(null);
+  const [productsList, setProductsList] = useState<BrigadeiroProduct[]>(BRIGADEIRO_PRODUCTS);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    fetchActiveProducts()
+      .then((data) => {
+        if (isMounted && data && data.length > 0) {
+          setProductsList(data);
+        }
+      })
+      .catch((err) => {
+        console.warn('Usando catálogo padrão local:', err);
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const categories = [
     { id: 'todos', name: 'Todos os Sabores' },
@@ -23,8 +48,8 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
   ];
 
   const filteredProducts = selectedCategory === 'todos'
-    ? BRIGADEIRO_PRODUCTS
-    : BRIGADEIRO_PRODUCTS.filter(p => p.flavorCategory === selectedCategory);
+    ? productsList
+    : productsList.filter(p => p.flavorCategory === selectedCategory);
 
   return (
     <section id="produtos" className="py-24 bg-[#FAF7F2] text-[#2C1A14] relative">
@@ -91,6 +116,26 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
               ))}
             </div>
 
+            {/* Loading Spinner */}
+            {loading && (
+              <div className="text-center py-8 text-xs text-[#6E574F] flex items-center justify-center space-x-2">
+                <RefreshCw className="w-4 h-4 animate-spin text-[#D4AF37]" />
+                <span>Atualizando produtos com o banco de dados...</span>
+              </div>
+            )}
+
+            {/* Empty State */}
+            {!loading && filteredProducts.length === 0 && (
+              <div className="text-center py-12 text-[#6E574F] text-sm bg-white rounded-2xl border border-[#E8DFD5] p-8 max-w-md mx-auto">
+                <p className="font-serif text-lg font-bold text-[#2C1A14] mb-2">
+                  Nenhum produto disponível nesta categoria no momento.
+                </p>
+                <p className="text-xs">
+                  Por favor, escolha outra categoria acima ou volte em breve.
+                </p>
+              </div>
+            )}
+
             {/* Product Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {filteredProducts.map((product) => (
@@ -103,9 +148,9 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
                     <div className="relative aspect-square overflow-hidden bg-[#FAF7F2]">
                       <img
                         src={product.image}
-                        alt={product.name}
+                        alt={`${product.name} - Encanto Gourmet`}
+                        loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        referrerPolicy="no-referrer"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                       
@@ -127,7 +172,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
                     {/* Content */}
                     <div className="p-5">
                       <span className="text-[10px] uppercase font-semibold tracking-widest text-[#D4AF37] block mb-1">
-                        {product.tag}
+                        {product.tag || 'Sabor Gourmet'}
                       </span>
                       <h3 className="font-serif text-xl font-bold text-[#2C1A14] mb-2 group-hover:text-[#6E473B] transition-colors">
                         {product.name}
@@ -141,7 +186,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
                   {/* Footer Card */}
                   <div className="px-5 pb-5 pt-0 border-t border-[#FAF7F2] mt-auto">
                     <div className="text-[11px] font-medium text-[#8A7067] mb-3 italic">
-                      {product.priceNote}
+                      {product.priceNote || `€ ${(product.price || 5.0).toFixed(2)}/unid`}
                     </div>
                     <button
                       onClick={() => onSelectProductToOrder(product)}
@@ -179,13 +224,12 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
             <div className="flex items-center space-x-4 mb-4">
               <img
                 src={selectedProductForDetail.image}
-                alt={selectedProductForDetail.name}
+                alt={`${selectedProductForDetail.name} - Encanto Gourmet`}
                 className="w-20 h-20 rounded-xl object-cover border border-[#D4AF37]/30"
-                referrerPolicy="no-referrer"
               />
               <div>
                 <span className="text-[10px] uppercase font-semibold text-[#D4AF37] tracking-widest">
-                  {selectedProductForDetail.tag}
+                  {selectedProductForDetail.tag || 'Sabor Gourmet'}
                 </span>
                 <h3 className="font-serif text-2xl font-bold text-[#2C1A14]">
                   {selectedProductForDetail.name}
@@ -202,7 +246,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
                 Ingredientes & Notas Gastronômicas:
               </span>
               <p className="text-xs text-[#6E574F] italic">
-                {selectedProductForDetail.ingredients}
+                {selectedProductForDetail.ingredients || 'Ingredientes nobres selecionados artesanalmente.'}
               </p>
             </div>
 

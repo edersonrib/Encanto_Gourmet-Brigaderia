@@ -173,4 +173,5 @@ export const INSTAGRAM_POSTS: InstagramPost[] = [
 
 export const INSTAGRAM_HANDLE = '@encantogourmet_brigadeiria';
 export const INSTAGRAM_URL = 'https://www.instagram.com/encantogourmet_brigadeiria/';
-export const WHATSAPP_NUMBER_PLACEHOLDER = '5500000000000'; // Placeholder to be customized by brand owner
+export const WHATSAPP_NUMBER_PLACEHOLDER = '351960158850';
+export const WHATSAPP_DISPLAY_NUMBER = '+351 960 158 850';

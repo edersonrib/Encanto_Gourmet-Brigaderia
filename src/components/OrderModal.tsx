@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrigadeiroProduct } from '../types';
 import { BRIGADEIRO_PRODUCTS, WHATSAPP_NUMBER_PLACEHOLDER } from '../data/products';
-import { X, MessageCircle, ShoppingBag, Gift, Calendar, User, Phone, MapPin, CheckCircle2 } from 'lucide-react';
+import { X, MessageCircle, ShoppingBag, Gift, Calendar, User, Phone, MapPin, CheckCircle2, Copy, Check, Settings2 } from 'lucide-react';
 
 interface OrderModalProps {
   isOpen: boolean;
@@ -30,6 +30,19 @@ export const OrderModal: React.FC<OrderModalProps> = ({
   const [deliveryOption, setDeliveryOption] = useState<'retirada' | 'entrega'>('retirada');
   const [notes, setNotes] = useState('');
 
+  // Store target WhatsApp configuration
+  const [storeWhatsapp, setStoreWhatsapp] = useState<string>(() => {
+    const saved = localStorage.getItem('encanto_store_whatsapp');
+    if (!saved || saved === '5500000000000' || saved.length < 9) {
+      localStorage.setItem('encanto_store_whatsapp', WHATSAPP_NUMBER_PLACEHOLDER);
+      return WHATSAPP_NUMBER_PLACEHOLDER;
+    }
+    return saved;
+  });
+  const [showPhoneConfig, setShowPhoneConfig] = useState<boolean>(false);
+  const [copied, setCopied] = useState<boolean>(false);
+  const [phoneError, setPhoneError] = useState<boolean>(false);
+
   useEffect(() => {
     if (preselectedBox) {
       setOrderType('box');
@@ -43,7 +56,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSendWhatsApp = () => {
+  const buildMessageText = () => {
     let messageText = `Olá, Encanto Gourmet! Gostaria de fazer uma encomenda. ✨\n\n`;
 
     if (customerName) {
@@ -81,9 +94,37 @@ export const OrderModal: React.FC<OrderModalProps> = ({
     }
 
     messageText += `\nAguardo confirmação do pedido e dados para pagamento! Muito obrigado(a).`;
+    return messageText;
+  };
 
+  const handleCopySummary = () => {
+    const text = buildMessageText();
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
+  };
+
+  const handleSendWhatsApp = () => {
+    // Sanitize store phone number
+    const targetPhoneDigits = (storeWhatsapp || WHATSAPP_NUMBER_PLACEHOLDER).replace(/\D/g, '');
+
+    // Check if target phone is placeholder 5500000000000 or invalid
+    if (!targetPhoneDigits || targetPhoneDigits === '5500000000000' || targetPhoneDigits.length < 9) {
+      setPhoneError(true);
+      setShowPhoneConfig(true);
+      return;
+    }
+
+    setPhoneError(false);
+    // Save valid store number to localStorage for future orders
+    localStorage.setItem('encanto_store_whatsapp', targetPhoneDigits);
+
+    const messageText = buildMessageText();
     const encodedText = encodeURIComponent(messageText);
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER_PLACEHOLDER}?text=${encodedText}`;
+    
+    // Direct WhatsApp link that opens WhatsApp app or WhatsApp Web
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${targetPhoneDigits}&text=${encodedText}`;
+    
     window.open(whatsappUrl, '_blank');
     onClose();
   };
@@ -110,7 +151,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
             Finalize a sua encomenda
           </h3>
           <p className="text-xs text-[#E8DFD5]/80 mt-1">
-            Preencha os detalhes e enviaremos o seu pedido diretamente para o WhatsApp do nosso ateliê.
+            Preencha os detalhes e envie o resumo do seu pedido diretamente para o WhatsApp do nosso ateliê.
           </p>
         </div>
 
@@ -293,17 +334,90 @@ export const OrderModal: React.FC<OrderModalProps> = ({
             />
           </div>
 
-          <div className="pt-2">
-            <button
-              onClick={handleSendWhatsApp}
-              id="modal-send-whatsapp-btn"
-              className="w-full py-4 px-6 text-xs font-semibold uppercase tracking-widest text-[#1F120E] bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] rounded-xl shadow-xl hover:shadow-[#25D366]/30 transition-all flex items-center justify-center space-x-2"
-            >
-              <MessageCircle className="w-4 h-4 fill-[#1F120E] text-transparent" />
-              <span>Enviar Pedido para WhatsApp</span>
-            </button>
+          {/* Store WhatsApp Target Input Section */}
+          <div className="pt-2 border-t border-[#2C1A14]">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[11px] font-medium text-[#D4AF37] flex items-center">
+                <Phone className="w-3 h-3 mr-1" />
+                Destinatário do Pedido: <strong className="text-[#FAF7F2] ml-1">+{storeWhatsapp.replace(/\D/g, '')}</strong>
+              </span>
+              <button
+                type="button"
+                onClick={() => setShowPhoneConfig(!showPhoneConfig)}
+                className="text-[10px] text-[#E8DFD5]/60 hover:text-[#D4AF37] underline flex items-center"
+              >
+                <Settings2 className="w-3 h-3 mr-1" />
+                {showPhoneConfig ? 'Ocultar' : 'Configurar número'}
+              </button>
+            </div>
+
+            {(showPhoneConfig || phoneError) && (
+              <div className="mb-3 p-3 rounded-xl bg-[#2C1A14] border border-[#D4AF37]/40 space-y-2 animate-fadeIn text-left">
+                <label className="block text-[10px] text-[#E8DFD5]/80">
+                  Número do WhatsApp da Encanto Gourmet (com código de país, ex: 351960158850):
+                </label>
+                <div className="flex space-x-2">
+                  <input
+                    type="tel"
+                    placeholder="Ex: 351960158850"
+                    value={storeWhatsapp}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/\D/g, '');
+                      setStoreWhatsapp(val);
+                      localStorage.setItem('encanto_store_whatsapp', val);
+                      setPhoneError(false);
+                    }}
+                    className="flex-1 bg-[#1F120E] border border-[#D4AF37]/40 rounded-lg p-2 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/40 focus:outline-none focus:border-[#D4AF37]"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setStoreWhatsapp(WHATSAPP_NUMBER_PLACEHOLDER);
+                      localStorage.setItem('encanto_store_whatsapp', WHATSAPP_NUMBER_PLACEHOLDER);
+                      setPhoneError(false);
+                    }}
+                    className="px-2.5 py-1 text-[10px] bg-[#1F120E] hover:bg-[#D4AF37] text-[#FAF7F2] hover:text-[#1F120E] border border-[#D4AF37]/40 rounded-lg transition-colors shrink-0"
+                  >
+                    Restaurar Padrão
+                  </button>
+                </div>
+                {phoneError && (
+                  <p className="text-[10px] text-amber-300">
+                    ⚠️ Por favor, informe um número de WhatsApp válido (ex: 351960158850).
+                  </p>
+                )}
+              </div>
+            )}
+
+            {/* Note explaining WhatsApp self-chat behavior */}
+            <div className="mb-3 p-2.5 rounded-xl bg-[#2C1A14]/70 border border-[#D4AF37]/20 text-[10.5px] text-[#E8DFD5]/80 leading-relaxed">
+              💡 <strong>Dica de Teste:</strong> Se estiver a testar no próprio telemóvel registado com o número <strong>+351 960 158 850</strong>, o WhatsApp abre a conversa com <i>Você (consigo mesmo)</i>. Quando um <strong>cliente real</strong> clica no botão, o WhatsApp abre o chat direto com o seu ateliê!
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 mt-2">
+              <button
+                type="button"
+                onClick={handleSendWhatsApp}
+                id="modal-send-whatsapp-btn"
+                className="sm:col-span-8 py-3.5 px-4 text-xs font-semibold uppercase tracking-widest text-[#1F120E] bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] rounded-xl shadow-xl hover:shadow-[#25D366]/30 transition-all flex items-center justify-center space-x-2"
+              >
+                <MessageCircle className="w-4 h-4 fill-[#1F120E] text-transparent" />
+                <span>Enviar Pedido para WhatsApp</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleCopySummary}
+                className="sm:col-span-4 py-3.5 px-3 text-xs font-medium text-[#FAF7F2] bg-[#2C1A14] hover:bg-[#D4AF37] hover:text-[#1F120E] border border-[#D4AF37]/30 rounded-xl transition-all flex items-center justify-center space-x-1.5"
+                title="Copiar o texto formatado da encomenda"
+              >
+                {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                <span>{copied ? 'Copiado!' : 'Copiar Resumo'}</span>
+              </button>
+            </div>
+
             <p className="text-[10px] text-center text-[#E8DFD5]/50 mt-2">
-              Você será redirecionado para o WhatsApp com a sua mensagem pré-formatada.
+              Você também pode copiar o resumo do pedido e colar diretamente no chat do WhatsApp.
             </p>
           </div>
 
@@ -313,3 +427,4 @@ export const OrderModal: React.FC<OrderModalProps> = ({
     </div>
   );
 };
+

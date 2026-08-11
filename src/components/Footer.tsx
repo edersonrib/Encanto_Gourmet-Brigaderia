@@ -1,6 +1,7 @@
 import React from 'react';
-import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../data/products';
-import { Instagram, MessageCircle, MapPin, Mail, Phone } from 'lucide-react';
+import { INSTAGRAM_URL, INSTAGRAM_HANDLE, WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER_PLACEHOLDER } from '../data/products';
+import { Instagram, MessageCircle, MapPin, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface FooterProps {
   onOpenOrderModal: () => void;
@@ -67,10 +68,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenOrderModal }) => {
               <li>
                 <a href="#depoimentos" className="hover:text-[#D4AF37] transition-colors">Depoimentos</a>
               </li>
+              <li className="pt-2">
+                <Link to="/admin" className="text-[#D4AF37]/80 hover:text-[#D4AF37] transition-colors flex items-center space-x-1 font-normal">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>Painel Administrativo</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Contact Placeholders */}
+          {/* Contact Details */}
           <div>
             <h4 className="font-serif text-base font-semibold text-[#FAF7F2] mb-4 text-[#D4AF37]">
               Contacto & Atendimento
@@ -78,19 +85,35 @@ export const Footer: React.FC<FooterProps> = ({ onOpenOrderModal }) => {
             <ul className="space-y-3 text-xs font-light text-[#E8DFD5]">
               <li className="flex items-start space-x-2.5">
                 <MessageCircle className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
-                <span>WhatsApp: <strong className="text-[#FAF7F2] font-normal">[Telefone / WhatsApp oficial]</strong></span>
+                <span>
+                  WhatsApp:{' '}
+                  <a
+                    href={`https://wa.me/${WHATSAPP_NUMBER_PLACEHOLDER}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#FAF7F2] hover:text-[#D4AF37] font-medium underline transition-colors"
+                  >
+                    {WHATSAPP_DISPLAY_NUMBER}
+                  </a>
+                </span>
               </li>
               <li className="flex items-start space-x-2.5">
                 <Instagram className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
-                <span>Instagram: <strong className="text-[#FAF7F2] font-normal">{INSTAGRAM_HANDLE}</strong></span>
-              </li>
-              <li className="flex items-start space-x-2.5">
-                <Mail className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
-                <span>E-mail: <strong className="text-[#FAF7F2] font-normal">[E-mail oficial]</strong></span>
+                <span>
+                  Instagram:{' '}
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#FAF7F2] hover:text-[#D4AF37] font-medium underline transition-colors"
+                  >
+                    {INSTAGRAM_HANDLE}
+                  </a>
+                </span>
               </li>
               <li className="flex items-start space-x-2.5">
                 <MapPin className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
-                <span>Localização: <strong className="text-[#FAF7F2] font-normal">[Cidade / Estado - Retiradas sob agendamento]</strong></span>
+                <span>Localização: <strong className="text-[#FAF7F2] font-normal">Portugal (Retiradas sob agendamento)</strong></span>
               </li>
             </ul>
           </div>
@@ -113,7 +136,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenOrderModal }) => {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-light text-[#E8DFD5]/60 space-y-4 sm:space-y-0">
           <p>© 2026 Encanto Gourmet. Todos os direitos reservados.</p>
-          <p className="text-[11px] italic">Brigadeiria Gourmet Artesanal • Elegância & Sabor</p>
+          <div className="flex items-center space-x-4 text-[11px] italic">
+            <span>Brigadeiria Gourmet Artesanal • Elegância & Sabor</span>
+            <span>•</span>
+            <Link to="/admin" className="not-italic text-[#E8DFD5]/40 hover:text-[#D4AF37] transition-colors">
+              Área do Administrador
+            </Link>
+          </div>
         </div>
 
       </div>
