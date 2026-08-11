@@ -10,7 +10,7 @@ const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'
 
 export const uploadProductImage = async (file: File, folderName: string = 'catalog'): Promise<UploadResult> => {
   if (!isSupabaseConfigured()) {
-    throw new Error('Supabase não está configurado. Configure as variáveis de ambiente no .env');
+    throw new Error('Supabase não está configurado. Configure VITE_SUPABASE_URL e VITE_SUPABASE_PUBLISHABLE_KEY no Vercel ou .env');
   }
 
   // File size validation

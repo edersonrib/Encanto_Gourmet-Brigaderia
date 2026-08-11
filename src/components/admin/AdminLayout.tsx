@@ -81,7 +81,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
                 <span>Supabase não ativo</span>
               </div>
               <p className="text-[10px] text-amber-200/80">
-                Configure <code className="text-amber-100 bg-amber-900/80 px-1 rounded">.env</code> para conectar ao banco de dados real.
+                Configure <code className="text-amber-100 bg-amber-900/80 px-1 rounded">VITE_SUPABASE_URL</code> e <code className="text-amber-100 bg-amber-900/80 px-1 rounded">VITE_SUPABASE_PUBLISHABLE_KEY</code> no Vercel ou <code className="text-amber-100 bg-amber-900/80 px-1 rounded">.env</code>.
               </p>
             </div>
           )}

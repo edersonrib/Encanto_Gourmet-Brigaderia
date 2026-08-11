@@ -74,7 +74,7 @@ export const AdminLogin: React.FC = () => {
               <span>Acesso em Modo de Teste</span>
             </div>
             <p className="text-[11px] text-amber-200/90 mb-2">
-              As chaves do Supabase ainda não foram configuradas no <code className="bg-amber-900/80 px-1 rounded">.env</code>.
+              As chaves do Supabase (<code className="bg-amber-900/80 px-1 rounded">VITE_SUPABASE_URL</code> e <code className="bg-amber-900/80 px-1 rounded">VITE_SUPABASE_PUBLISHABLE_KEY</code>) ainda não foram identificadas neste ambiente.
             </p>
             <button
               type="button"

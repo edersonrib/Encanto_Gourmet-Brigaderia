@@ -15,7 +15,7 @@ export const signInWithEmail = async (email: string, password: string) => {
     }
     return {
       user: null,
-      error: { message: 'Supabase não configurado. Adicione VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY no arquivo .env ou use admin@encantogourmet.pt / admin123' },
+      error: { message: 'Supabase não configurado. Adicione VITE_SUPABASE_URL e VITE_SUPABASE_PUBLISHABLE_KEY no Vercel ou .env' },
     };
   }
 

@@ -106,7 +106,7 @@ export const fetchAllProductsAdmin = async (): Promise<BrigadeiroProduct[]> => {
 // Create Product
 export const createProduct = async (productData: Partial<BrigadeiroProduct>): Promise<BrigadeiroProduct> => {
   if (!isSupabaseConfigured()) {
-    throw new Error('Supabase não configurado. Adicione VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY no arquivo .env');
+    throw new Error('Supabase não configurado. Adicione VITE_SUPABASE_URL e VITE_SUPABASE_PUBLISHABLE_KEY no Vercel ou .env');
   }
 
   const payload = mapProductToDbPayload(productData);
