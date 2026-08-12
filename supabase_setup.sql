@@ -19,16 +19,32 @@ CREATE TABLE IF NOT EXISTS public.profiles (
 -- Habilitar RLS na tabela de perfis
 ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 
--- Politica para leitura de perfis
+-- Função helper SECURITY DEFINER para checar se o usuário é admin/editor sem causar recursão RLS
+CREATE OR REPLACE FUNCTION public.is_admin_or_editor()
+RETURNS boolean
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+STABLE
+AS $$
+BEGIN
+  RETURN EXISTS (
+    SELECT 1 FROM public.profiles
+    WHERE id = auth.uid()
+      AND role IN ('admin', 'editor')
+  );
+END;
+$$;
+
+-- Remover políticas antigas se existirem para evitar conflitos
+DROP POLICY IF EXISTS "Permitir leitura de perfil proprio ou por admins" ON public.profiles;
+
+-- Politica para leitura de perfis sem recursão
 CREATE POLICY "Permitir leitura de perfil proprio ou por admins"
   ON public.profiles
   FOR SELECT
   USING (
-    auth.uid() = id OR 
-    EXISTS (
-      SELECT 1 FROM public.profiles 
-      WHERE id = auth.uid() AND role = 'admin'
-    )
+    auth.uid() = id OR public.is_admin_or_editor()
   );
 
 -- Trigger para criar perfil automaticamente na criação do usuário no Auth
@@ -88,19 +104,18 @@ CREATE TRIGGER update_products_updated_at
 -- 4. POLÍTICAS DE SEGURANÇA (ROW LEVEL SECURITY - RLS)
 ALTER TABLE public.products ENABLE ROW LEVEL SECURITY;
 
--- Visitantes e público geral podem visualizar produtos ativos
+-- Remover políticas antigas se existirem para recriar de forma limpa
+DROP POLICY IF EXISTS "Produtos ativos sao visiveis para todos" ON public.products;
+DROP POLICY IF EXISTS "Somente administradores podem criar produtos" ON public.products;
+DROP POLICY IF EXISTS "Somente administradores podem atualizar produtos" ON public.products;
+DROP POLICY IF EXISTS "Somente administradores podem deletar produtos" ON public.products;
+
+-- Visitantes e público geral podem visualizar produtos ativos; admins/editores veem todos
 CREATE POLICY "Produtos ativos sao visiveis para todos"
   ON public.products
   FOR SELECT
   USING (
-    active = true OR 
-    (
-      auth.role() = 'authenticated' AND 
-      EXISTS (
-        SELECT 1 FROM public.profiles 
-        WHERE profiles.id = auth.uid() AND profiles.role IN ('admin', 'editor')
-      )
-    )
+    active = true OR public.is_admin_or_editor()
   );
 
 -- Somente Administradores/Editores autenticados podem INSERIR produtos
@@ -108,11 +123,7 @@ CREATE POLICY "Somente administradores podem criar produtos"
   ON public.products
   FOR INSERT
   WITH CHECK (
-    auth.role() = 'authenticated' AND 
-    EXISTS (
-      SELECT 1 FROM public.profiles 
-      WHERE profiles.id = auth.uid() AND profiles.role IN ('admin', 'editor')
-    )
+    public.is_admin_or_editor()
   );
 
 -- Somente Administradores/Editores autenticados podem ATUALIZAR produtos
@@ -120,11 +131,7 @@ CREATE POLICY "Somente administradores podem atualizar produtos"
   ON public.products
   FOR UPDATE
   USING (
-    auth.role() = 'authenticated' AND 
-    EXISTS (
-      SELECT 1 FROM public.profiles 
-      WHERE profiles.id = auth.uid() AND profiles.role IN ('admin', 'editor')
-    )
+    public.is_admin_or_editor()
   );
 
 -- Somente Administradores/Editores autenticados podem DELETAR produtos
@@ -132,11 +139,7 @@ CREATE POLICY "Somente administradores podem deletar produtos"
   ON public.products
   FOR DELETE
   USING (
-    auth.role() = 'authenticated' AND 
-    EXISTS (
-      SELECT 1 FROM public.profiles 
-      WHERE profiles.id = auth.uid() AND profiles.role IN ('admin', 'editor')
-    )
+    public.is_admin_or_editor()
   );
 
 
