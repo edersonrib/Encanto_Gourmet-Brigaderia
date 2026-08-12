@@ -60,17 +60,13 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
         <div>
           {/* Brand Logo */}
           <div className="flex items-center space-x-3 pb-6 border-b border-[#2C1A14] mb-6">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#9A7B1C] flex items-center justify-center text-[#1F120E] font-serif font-bold text-xl shadow-lg">
-              E
-            </div>
-            <div>
-              <h1 className="font-serif text-base font-bold text-[#FAF7F2] tracking-wide">
-                {BRAND_CONFIG.name}
-              </h1>
-              <span className="text-[10px] uppercase font-semibold text-[#D4AF37] tracking-widest block">
-                Painel Administrativo
-              </span>
-            </div>
+            <Link to="/admin" aria-label="Encanto Gourmet - Painel Administrativo">
+              <img
+                src="/images/logo-encanto-gourmet.png"
+                alt="Encanto Gourmet - Brigadeiria"
+                className="h-12 w-auto object-contain max-w-[180px]"
+              />
+            </Link>
           </div>
 
           {/* Warning Banner if Supabase env is not configured yet */}

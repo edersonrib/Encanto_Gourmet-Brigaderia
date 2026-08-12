@@ -16,18 +16,21 @@ export const Footer: React.FC<FooterProps> = ({ onOpenOrderModal }) => {
           
           {/* Brand Info */}
           <div className="space-y-4">
-            <a href="#hero" className="inline-block">
-              <span className="font-serif-display text-2xl font-light tracking-wider text-[#FAF7F2]">
-                ENCANTO
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.3em] font-sans text-[#D4AF37] block -mt-1 font-semibold">
-                BRIGADEIRIA GOURMET
-              </span>
+            <a
+              href="#hero"
+              aria-label="Encanto Gourmet - Página inicial"
+              className="inline-block transition-transform hover:scale-[1.02]"
+            >
+              <img
+                src="/images/logo-encanto-gourmet.png"
+                alt="Encanto Gourmet - Brigadeiria"
+                className="h-14 sm:h-16 w-auto object-contain"
+              />
             </a>
-            <p className="text-xs text-[#E8DFD5]/80 leading-relaxed font-light">
-              Brigadeiros gourmet artesanais feitos para transformar momentos especiais em experiências inesquecíveis.
+            <p className="text-xs text-[#E8DFD5]/90 leading-relaxed font-light">
+              Brigadeiros gourmet feitos para encantar.
             </p>
-            <div className="flex items-center space-x-3 pt-2">
+            <div className="flex items-center space-x-3 pt-1">
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"

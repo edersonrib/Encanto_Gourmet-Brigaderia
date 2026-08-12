@@ -52,12 +52,11 @@ export const AdminLogin: React.FC = () => {
 
         {/* Brand Header */}
         <div className="text-center mb-8">
-          <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#9A7B1C] flex items-center justify-center text-[#1F120E] font-serif font-bold text-2xl shadow-xl mb-4">
-            E
-          </div>
-          <h1 className="font-serif text-2xl font-bold text-[#FAF7F2]">
-            {BRAND_CONFIG.name}
-          </h1>
+          <img
+            src="/images/logo-encanto-gourmet.png"
+            alt="Encanto Gourmet - Brigadeiria"
+            className="h-20 sm:h-24 w-auto mx-auto mb-4 object-contain"
+          />
           <p className="text-xs text-[#D4AF37] uppercase tracking-widest font-semibold mt-1">
             Painel Administrativo CMS
           </p>

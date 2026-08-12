@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600">
+  <g fill="none" stroke="#D4AF37" stroke-linecap="round" stroke-linejoin="round">
+    
+    <!-- Sparkle Stars (Top Right) -->
+    <!-- Large Star -->
+    <path d="M 625 40 Q 625 65 650 65 Q 625 65 625 90 Q 625 65 600 65 Q 625 65 625 40 Z" fill="#D4AF37" stroke="none" />
+    <!-- Small Star -->
+    <path d="M 675 100 Q 675 115 690 115 Q 675 115 675 130 Q 675 115 660 115 Q 675 115 675 100 Z" fill="#D4AF37" stroke="none" />
+
+    <!-- Brigadeiro Dome -->
+    <path d="M 370 210 C 360 130, 430 70, 500 70 C 570 70, 640 130, 630 210" stroke="#D4AF37" stroke-width="8" fill="none" />
+
+    <!-- Sprinkles / Granulado on Dome -->
+    <!-- Sprinkle 1 -->
+    <rect x="440" y="100" width="8" height="24" rx="4" transform="rotate(45 444 112)" fill="#D4AF37" stroke="none" />
+    <!-- Sprinkle 2 -->
+    <rect x="530" y="100" width="8" height="24" rx="4" transform="rotate(-30 534 112)" fill="#D4AF37" stroke="none" />
+    <!-- Sprinkle 3 -->
+    <rect x="480" y="130" width="8" height="24" rx="4" transform="rotate(60 484 142)" fill="#D4AF37" stroke="none" />
+    <!-- Sprinkle 4 -->
+    <rect x="410" y="150" width="8" height="24" rx="4" transform="rotate(-40 414 162)" fill="#D4AF37" stroke="none" />
+    <!-- Sprinkle 5 -->
+    <rect x="570" y="140" width="8" height="24" rx="4" transform="rotate(25 574 152)" fill="#D4AF37" stroke="none" />
+    <!-- Sprinkle 6 -->
+    <rect x="520" y="170" width="8" height="24" rx="4" transform="rotate(-50 524 182)" fill="#D4AF37" stroke="none" />
+    <!-- Sprinkle 7 -->
+    <rect x="460" y="190" width="8" height="24" rx="4" transform="rotate(35 464 202)" fill="#D4AF37" stroke="none" />
+
+    <!-- Wrapper Top Scalloped Rim -->
+    <path d="M 345 210 C 345 190, 365 190, 365 210 C 365 190, 385 190, 385 210 C 385 190, 405 190, 405 210 C 405 190, 425 190, 425 210 C 425 190, 445 190, 445 210 C 445 190, 465 190, 465 210 C 465 190, 485 190, 485 210 C 485 190, 505 190, 505 210 C 505 190, 525 190, 525 210 C 525 190, 545 190, 545 210 C 545 190, 565 190, 565 210 C 565 190, 585 190, 585 210 C 585 190, 605 190, 605 210 C 605 190, 625 190, 625 210 C 625 190, 645 190, 645 210 C 645 190, 655 200, 655 210" stroke="#D4AF37" stroke-width="7" fill="none" />
+
+    <!-- Wrapper Pleats & Outer Edges -->
+    <path d="M 345 210 L 370 260 C 370 260, 405 240, 500 240 C 595 240, 630 260, 630 260 L 655 210" stroke="#D4AF37" stroke-width="7" fill="none" />
+    <path d="M 370 260 L 440 350 C 470 355, 530 355, 560 350 L 630 260" stroke="#D4AF37" stroke-width="7" fill="none" />
+
+    <!-- Vertical Pleat Lines -->
+    <path d="M 400 252 L 465 352" stroke="#D4AF37" stroke-width="6" />
+    <path d="M 435 246 L 490 355" stroke="#D4AF37" stroke-width="6" />
+    <path d="M 470 242 L 515 355" stroke="#D4AF37" stroke-width="6" />
+    <path d="M 500 240 L 530 355" stroke="#D4AF37" stroke-width="6" />
+    <path d="M 530 242 L 545 354" stroke="#D4AF37" stroke-width="6" />
+    <path d="M 565 246 L 560 351" stroke="#D4AF37" stroke-width="6" />
+    <path d="M 600 252 L 575 345" stroke="#D4AF37" stroke-width="6" />
+
+  </g>
+
+  <!-- Text "Encanto Gourmet" -->
+  <text x="500" y="480" font-family="'Great Vibes', 'Playfair Display', 'Brush Script MT', cursive, serif" font-size="115" font-style="italic" fill="#D4AF37" text-anchor="middle">
+    Encanto Gourmet
+  </text>
+
+  <!-- Text "BRIGADEIRIA" -->
+  <text x="500" y="560" font-family="'Montserrat', 'Cinzel', 'Trajan Pro', sans-serif, serif" font-size="34" font-weight="400" fill="#D4AF37" letter-spacing="18" text-anchor="middle">
+    BRIGADEIRIA
+  </text>
+</svg>

@@ -27,7 +27,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
     { name: 'Brigadeiros', href: '#produtos' },
     { name: 'Sobre nós', href: '#sobre' },
     { name: 'Encomendas', href: '#eventos' },
-    { name: 'Depoimentos', href: '#depoimentos' },
     { name: 'Contacto', href: '#contacto' },
   ];
 
@@ -35,25 +34,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-[#1F120E]/95 backdrop-blur-md py-3 shadow-xl border-b border-[#D4AF37]/20 text-[#FAF7F2]'
-          : 'bg-gradient-to-b from-[#1F120E]/80 via-[#1F120E]/40 to-transparent py-5 text-[#FAF7F2]'
+          ? 'bg-[#1F120E]/95 backdrop-blur-md py-2.5 shadow-xl border-b border-[#D4AF37]/20 text-[#FAF7F2]'
+          : 'bg-gradient-to-b from-[#1F120E]/85 via-[#1F120E]/40 to-transparent py-4 text-[#FAF7F2]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Logo */}
+          {/* Logo Oficial */}
           <a
             href="#hero"
-            className="group flex flex-col items-start focus:outline-none"
+            aria-label="Encanto Gourmet - Página inicial"
+            className="group inline-flex items-center focus:outline-none transition-transform hover:scale-[1.02]"
             id="logo-brand"
           >
-            <span className="font-serif-display text-2xl sm:text-3xl font-light tracking-wider text-[#FAF7F2] group-hover:text-[#D4AF37] transition-colors">
-              ENCANTO
-            </span>
-            <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-sans text-[#D4AF37] -mt-1 font-semibold">
-              BRIGADEIRIA GOURMET
-            </span>
+            <img
+              src="/images/logo-encanto-gourmet.png"
+              alt="Encanto Gourmet - Brigadeiria"
+              className="h-[52px] sm:h-[60px] md:h-[68px] w-auto object-contain max-w-[220px] sm:max-w-[280px]"
+            />
           </a>
 
           {/* Desktop Navigation Links */}
