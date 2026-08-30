@@ -22,9 +22,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenOrderModal }) => {
               className="inline-block transition-transform hover:scale-[1.02]"
             >
               <img
-                src="/images/logo-encanto-gourmet.png"
-                alt="Encanto Gourmet - Brigadeiria"
-                className="h-14 sm:h-16 w-auto object-contain"
+                src="/images/logo-footer.png"
+                alt="Encanto Gourmet - Brigadeiro"
+                className="h-16 sm:h-20 w-auto object-contain"
               />
             </a>
             <p className="text-xs text-[#E8DFD5]/90 leading-relaxed font-light">
