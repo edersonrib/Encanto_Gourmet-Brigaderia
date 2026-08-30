@@ -4,10 +4,12 @@ import { BrigadeiroProduct } from '../types';
 import { Plus, Minus, Check, Gift, ShoppingBag, Sparkles, AlertCircle } from 'lucide-react';
 
 interface CustomBoxBuilderProps {
+  products?: BrigadeiroProduct[];
   onOrderCustomBox: (boxSize: number, selectedFlavors: { product: BrigadeiroProduct; count: number }[], ribbonColor: string, totalPrice: number) => void;
 }
 
-export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ onOrderCustomBox }) => {
+export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, onOrderCustomBox }) => {
+  const availableProducts = products && products.length > 0 ? products : BRIGADEIRO_PRODUCTS;
   const [boxSize, setBoxSize] = useState<number>(9);
   const [counts, setCounts] = useState<Record<string, number>>({});
   const [ribbonColor, setRibbonColor] = useState<string>('Dourado Imperial');
@@ -44,17 +46,24 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ onOrderCusto
     setCounts({});
   };
 
-  // Calculate estimated price based on items or base option
-  const estimatedPrice = currentBoxOption.basePrice;
+  const selectedItems = Object.entries(counts)
+    .map(([id, count]: [string, number]) => {
+      const product = availableProducts.find(p => p.id === id);
+      return product ? { product, count } : null;
+    })
+    .filter((item): item is { product: BrigadeiroProduct; count: number } => item !== null && Number(item.count) > 0);
+
+  // Calculate real total price based on products from database
+  const calculatedItemsTotal = selectedItems.reduce((acc, curr) => {
+    const itemPrice = curr.product.price !== undefined && curr.product.price !== null
+      ? Number(curr.product.price)
+      : (curr.product.unitPriceEstimate ?? 5.0);
+    return acc + (itemPrice * curr.count);
+  }, 0);
+
+  const estimatedPrice = totalSelected > 0 ? calculatedItemsTotal : currentBoxOption.basePrice;
 
   const handleFinishBox = () => {
-    const selectedItems = Object.entries(counts)
-      .map(([id, count]: [string, number]) => {
-        const product = BRIGADEIRO_PRODUCTS.find(p => p.id === id);
-        return product ? { product, count } : null;
-      })
-      .filter((item): item is { product: BrigadeiroProduct; count: number } => item !== null && Number(item.count) > 0);
-
     onOrderCustomBox(boxSize, selectedItems, ribbonColor, estimatedPrice);
   };
 
@@ -104,7 +113,7 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ onOrderCusto
                     {opt.size} <span className="text-xs font-normal text-[#FAF7F2]">unid.</span>
                   </span>
                   <span className="block text-[11px] text-[#E8DFD5] font-medium leading-tight">
-                    R$ {opt.basePrice.toFixed(2).replace('.', ',')}
+                    {opt.label.split('(')[0].trim()}
                   </span>
                 </button>
               ))}
@@ -140,8 +149,12 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ onOrderCusto
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[360px] overflow-y-auto pr-2 custom-scrollbar">
-              {BRIGADEIRO_PRODUCTS.map((product) => {
+              {availableProducts.map((product) => {
                 const count: number = Number(counts[product.id] || 0);
+                const unitPrice = product.price !== undefined && product.price !== null
+                  ? Number(product.price)
+                  : (product.unitPriceEstimate ?? 5.0);
+
                 return (
                   <div
                     key={product.id}
@@ -162,9 +175,13 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ onOrderCusto
                         <h4 className="text-xs font-serif font-bold text-[#FAF7F2] line-clamp-1">
                           {product.name}
                         </h4>
-                        <p className="text-[10px] text-[#E8DFD5]/70 line-clamp-1">
-                          {product.tag}
-                        </p>
+                        <div className="flex items-center space-x-1.5 text-[10px] text-[#E8DFD5]/70">
+                          <span className="line-clamp-1">{product.tag || 'Gourmet'}</span>
+                          <span>•</span>
+                          <span className="text-[#D4AF37] font-semibold whitespace-nowrap">
+                            R$ {unitPrice.toFixed(2).replace('.', ',')}
+                          </span>
+                        </div>
                       </div>
                     </div>
 
@@ -245,12 +262,21 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ onOrderCusto
                 </p>
               ) : (
                 Object.entries(counts).map(([id, count]: [string, number]) => {
-                  const p = BRIGADEIRO_PRODUCTS.find(item => item.id === id);
+                  const p = availableProducts.find(item => item.id === id);
                   if (!p || count <= 0) return null;
+                  const itemPrice = p.price !== undefined && p.price !== null
+                    ? Number(p.price)
+                    : (p.unitPriceEstimate ?? 5.0);
+
                   return (
                     <div key={id} className="flex justify-between items-center text-xs py-1 text-[#E8DFD5]">
-                      <span className="truncate max-w-[170px]">{p.name}</span>
-                      <span className="font-semibold text-[#D4AF37]">{count}x</span>
+                      <span className="truncate max-w-[140px]">{p.name}</span>
+                      <div className="flex items-center space-x-2">
+                        <span className="text-[11px] text-[#FAF7F2]/60">
+                          R$ {(itemPrice * count).toFixed(2).replace('.', ',')}
+                        </span>
+                        <span className="font-semibold text-[#D4AF37]">{count}x</span>
+                      </div>
                     </div>
                   );
                 })
@@ -267,7 +293,7 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ onOrderCusto
                 <span className="text-emerald-400 font-medium">Inclusa</span>
               </div>
               <div className="flex justify-between pt-2 text-sm font-serif border-t border-[#FAF7F2]/10">
-                <span className="font-semibold text-[#FAF7F2]">Valor Estimado:</span>
+                <span className="font-semibold text-[#FAF7F2]">Valor Total:</span>
                 <span className="font-bold text-[#D4AF37]">R$ {estimatedPrice.toFixed(2).replace('.', ',')}</span>
               </div>
             </div>
@@ -299,3 +325,4 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ onOrderCusto
     </div>
   );
 };
+

@@ -206,7 +206,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
 
         {/* TAB 2: CUSTOM BOX BUILDER */}
         {activeTab === 'box_builder' && (
-          <CustomBoxBuilder onOrderCustomBox={onOrderCustomBox} />
+          <CustomBoxBuilder products={productsList} onOrderCustomBox={onOrderCustomBox} />
         )}
 
       </div>
