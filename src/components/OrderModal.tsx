@@ -70,7 +70,6 @@ export const OrderModal: React.FC<OrderModalProps> = ({
 
     if (orderType === 'box' && preselectedBox) {
       messageText += `Caixa de Presente Personalizada (${preselectedBox.boxSize} unidades)\n`;
-      messageText += `🎗️ *Acabamento do Laço:* ${preselectedBox.ribbonColor}\n`;
       messageText += `🍬 *Sabores Escolhidos:*\n`;
       preselectedBox.selectedFlavors.forEach(item => {
         messageText += `   • ${item.count}x ${item.product.name}\n`;
@@ -203,7 +202,6 @@ export const OrderModal: React.FC<OrderModalProps> = ({
           {orderType === 'box' && preselectedBox && (
             <div className="p-4 rounded-xl bg-[#2C1A14] border border-[#D4AF37]/40 text-xs space-y-1">
               <span className="text-[#D4AF37] font-semibold block">Caixa Configurada ({preselectedBox.boxSize} unid.):</span>
-              <p className="text-[#E8DFD5]">Laço: {preselectedBox.ribbonColor}</p>
               <p className="text-[#E8DFD5] italic line-clamp-2">
                 Sabores: {preselectedBox.selectedFlavors.map(f => `${f.count}x ${f.product.name}`).join(', ')}
               </p>

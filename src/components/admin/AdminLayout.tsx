@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   ShoppingBag,
   PlusCircle,
+  Gift,
   LogOut,
   ExternalLink,
   Sparkles,
@@ -49,6 +50,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
   const navItems = [
     { label: 'Visão Geral', path: '/admin', icon: LayoutDashboard },
     { label: 'Gerenciar Produtos', path: '/admin/products', icon: ShoppingBag },
+    { label: 'Tamanhos de Caixas', path: '/admin/boxes', icon: Gift },
     { label: 'Novo Produto', path: '/admin/products/new', icon: PlusCircle },
   ];
 

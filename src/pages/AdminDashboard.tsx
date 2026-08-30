@@ -12,7 +12,8 @@ import {
   Edit,
   ArrowRight,
   TrendingUp,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Gift
 } from 'lucide-react';
 
 export const AdminDashboard: React.FC = () => {
@@ -113,23 +114,44 @@ export const AdminDashboard: React.FC = () => {
       </div>
 
       {/* Quick Action Banner */}
-      <div className="bg-gradient-to-r from-[#2C1A14] to-[#1F120E] border border-[#D4AF37]/30 rounded-2xl p-6 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <h3 className="font-serif text-lg font-bold text-[#FAF7F2] flex items-center">
-            <Sparkles className="w-5 h-5 text-[#D4AF37] mr-2" />
-            Adicionar Novo Produto ao Catálogo
-          </h3>
-          <p className="text-xs text-[#E8DFD5]/80 mt-1 font-light">
-            Cadastre novos sabores de brigadeiros, insira a descrição e envie uma foto em alta definição.
-          </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="bg-gradient-to-r from-[#2C1A14] to-[#1F120E] border border-[#D4AF37]/30 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <h3 className="font-serif text-base font-bold text-[#FAF7F2] flex items-center">
+              <Sparkles className="w-4 h-4 text-[#D4AF37] mr-2" />
+              Adicionar Novo Produto
+            </h3>
+            <p className="text-[11px] text-[#E8DFD5]/80 mt-0.5 font-light">
+              Cadastre novos sabores e fotos no catálogo.
+            </p>
+          </div>
+          <Link
+            to="/admin/products/new"
+            className="px-4 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#C59B27] text-[#1F120E] font-semibold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center space-x-1.5 shrink-0"
+          >
+            <PlusCircle className="w-3.5 h-3.5" />
+            <span>Cadastrar Sabor</span>
+          </Link>
         </div>
-        <Link
-          to="/admin/products/new"
-          className="px-5 py-3 rounded-xl bg-[#D4AF37] hover:bg-[#C59B27] text-[#1F120E] font-semibold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center space-x-2 shrink-0"
-        >
-          <PlusCircle className="w-4 h-4" />
-          <span>Cadastrar Sabor</span>
-        </Link>
+
+        <div className="bg-gradient-to-r from-[#2C1A14] to-[#1F120E] border border-[#D4AF37]/30 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <h3 className="font-serif text-base font-bold text-[#FAF7F2] flex items-center">
+              <Gift className="w-4 h-4 text-[#D4AF37] mr-2" />
+              Configurar Caixas de Presentes
+            </h3>
+            <p className="text-[11px] text-[#E8DFD5]/80 mt-0.5 font-light">
+              Altere tamanhos e opções da montagem personalizada.
+            </p>
+          </div>
+          <Link
+            to="/admin/boxes"
+            className="px-4 py-2.5 rounded-xl bg-[#2C1A14] hover:bg-[#382119] text-[#FAF7F2] hover:text-[#D4AF37] border border-[#D4AF37]/40 font-semibold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center space-x-1.5 shrink-0"
+          >
+            <Gift className="w-3.5 h-3.5" />
+            <span>Gerenciar Caixas</span>
+          </Link>
+        </div>
       </div>
 
       {/* Recent Products List */}

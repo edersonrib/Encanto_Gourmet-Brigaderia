@@ -51,6 +51,17 @@ export interface CustomBoxFlavor {
   quantity: number;
 }
 
+export interface BoxSizeOption {
+  id: string;
+  size: number;
+  label: string;
+  basePrice?: number;
+  active: boolean;
+  display_order?: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
 export interface Testimonial {
   id: string;
   author: string;

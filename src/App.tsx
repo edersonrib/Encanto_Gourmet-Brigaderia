@@ -5,6 +5,7 @@ import { AdminLogin } from './pages/AdminLogin';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { AdminProductsList } from './pages/AdminProductsList';
 import { AdminProductForm } from './pages/AdminProductForm';
+import { AdminBoxSizes } from './pages/AdminBoxSizes';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/admin/products" element={<AdminProductsList />} />
         <Route path="/admin/products/new" element={<AdminProductForm />} />
         <Route path="/admin/products/:id/edit" element={<AdminProductForm />} />
+        <Route path="/admin/boxes" element={<AdminBoxSizes />} />
 
         {/* Fallback de rotas nao encontradas */}
         <Route path="*" element={<Navigate to="/" replace />} />

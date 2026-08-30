@@ -234,3 +234,61 @@ INSERT INTO public.products (
   true, true, 4
 )
 ON CONFLICT (slug) DO NOTHING;
+
+
+-- 7. TABELA DE CONFIGURAÇÃO DE TAMANHOS DE CAIXAS (BOX SIZES)
+CREATE TABLE IF NOT EXISTS public.box_sizes (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  size INT NOT NULL UNIQUE,
+  label TEXT NOT NULL,
+  base_price NUMERIC(10,2) NOT NULL DEFAULT 0.00,
+  active BOOLEAN NOT NULL DEFAULT true,
+  display_order INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now()),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now())
+);
+
+ALTER TABLE public.box_sizes ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Tamanhos de caixas visiveis para todos" ON public.box_sizes;
+DROP POLICY IF EXISTS "Somente administradores podem criar tamanhos de caixa" ON public.box_sizes;
+DROP POLICY IF EXISTS "Somente administradores podem atualizar tamanhos de caixa" ON public.box_sizes;
+DROP POLICY IF EXISTS "Somente administradores podem deletar tamanhos de caixa" ON public.box_sizes;
+
+CREATE POLICY "Tamanhos de caixas visiveis para todos"
+  ON public.box_sizes
+  FOR SELECT
+  USING (
+    active = true OR public.is_admin_or_editor()
+  );
+
+CREATE POLICY "Somente administradores podem criar tamanhos de caixa"
+  ON public.box_sizes
+  FOR INSERT
+  WITH CHECK (
+    public.is_admin_or_editor()
+  );
+
+CREATE POLICY "Somente administradores podem atualizar tamanhos de caixa"
+  ON public.box_sizes
+  FOR UPDATE
+  USING (
+    public.is_admin_or_editor()
+  );
+
+CREATE POLICY "Somente administradores podem deletar tamanhos de caixa"
+  ON public.box_sizes
+  FOR DELETE
+  USING (
+    public.is_admin_or_editor()
+  );
+
+-- Seed de tamanhos padrão de caixas
+INSERT INTO public.box_sizes (size, label, base_price, active, display_order)
+VALUES
+  (4, 'Caixa Degustação (4 unid.)', 22.00, true, 1),
+  (9, 'Caixa Presente (9 unid.)', 48.00, true, 2),
+  (16, 'Caixa Elegance (16 unid.)', 85.00, true, 3),
+  (25, 'Caixa Festiva (25 unid.)', 130.00, true, 4)
+ON CONFLICT (size) DO NOTHING;
+

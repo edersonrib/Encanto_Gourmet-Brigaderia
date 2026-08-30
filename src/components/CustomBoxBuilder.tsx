@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BRIGADEIRO_PRODUCTS } from '../data/products';
-import { BrigadeiroProduct } from '../types';
+import { BrigadeiroProduct, BoxSizeOption } from '../types';
+import { fetchActiveBoxOptions, DEFAULT_BOX_OPTIONS } from '../services/boxSettings';
 import { Plus, Minus, Check, Gift, ShoppingBag, Sparkles, AlertCircle } from 'lucide-react';
 
 interface CustomBoxBuilderProps {
@@ -10,20 +11,25 @@ interface CustomBoxBuilderProps {
 
 export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, onOrderCustomBox }) => {
   const availableProducts = products && products.length > 0 ? products : BRIGADEIRO_PRODUCTS;
+  const [boxOptions, setBoxOptions] = useState<BoxSizeOption[]>(DEFAULT_BOX_OPTIONS);
   const [boxSize, setBoxSize] = useState<number>(9);
   const [counts, setCounts] = useState<Record<string, number>>({});
-  const [ribbonColor, setRibbonColor] = useState<string>('Dourado Imperial');
+
+  useEffect(() => {
+    fetchActiveBoxOptions().then(options => {
+      if (options && options.length > 0) {
+        setBoxOptions(options);
+        // If current boxSize is not in the active options, select the first available
+        if (!options.some(o => o.size === boxSize)) {
+          setBoxSize(options[0].size);
+        }
+      }
+    });
+  }, []);
 
   const totalSelected: number = (Object.values(counts) as number[]).reduce((acc: number, curr: number) => acc + curr, 0);
 
-  const boxOptions = [
-    { size: 4, label: 'Caixa Degustação (4 unid.)', basePrice: 22.00 },
-    { size: 9, label: 'Caixa Presente (9 unid.)', basePrice: 48.00 },
-    { size: 16, label: 'Caixa Elegance (16 unid.)', basePrice: 85.00 },
-    { size: 25, label: 'Caixa Festiva (25 unid.)', basePrice: 130.00 },
-  ];
-
-  const currentBoxOption = boxOptions.find(b => b.size === boxSize) || boxOptions[1];
+  const currentBoxOption = boxOptions.find(b => b.size === boxSize) || boxOptions[0] || { size: boxSize, label: `Caixa (${boxSize} unid.)`, basePrice: 48 };
 
   const handleIncrement = (id: string) => {
     if (totalSelected >= boxSize) return;
@@ -61,10 +67,10 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
     return acc + (itemPrice * curr.count);
   }, 0);
 
-  const estimatedPrice = totalSelected > 0 ? calculatedItemsTotal : currentBoxOption.basePrice;
+  const estimatedPrice = totalSelected > 0 ? calculatedItemsTotal : (currentBoxOption.basePrice || 0);
 
   const handleFinishBox = () => {
-    onOrderCustomBox(boxSize, selectedItems, ribbonColor, estimatedPrice);
+    onOrderCustomBox(boxSize, selectedItems, 'Embalagem Especial Ateliê', estimatedPrice);
   };
 
   return (
@@ -79,7 +85,7 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
           Monte o seu presente ideal
         </h3>
         <p className="text-sm text-[#E8DFD5]/80 mt-2 font-light">
-          Escolha o tamanho da caixa, selecione seus brigadeiros favoritos e escolha o laço de acabamento.
+          Escolha o tamanho da caixa e selecione seus brigadeiros favoritos para compor o presente perfeito.
         </p>
       </div>
 
@@ -88,7 +94,7 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
         {/* Left Column: Configuration Controls */}
         <div className="lg:col-span-8 space-y-8">
           
-          {/* Step 1: Box Size Selection */}
+          {/* Step 1: Dynamic Box Size Selection */}
           <div>
             <label className="block text-xs uppercase tracking-widest text-[#D4AF37] font-semibold mb-3">
               1. Selecione o tamanho da caixa
@@ -96,7 +102,7 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {boxOptions.map((opt) => (
                 <button
-                  key={opt.size}
+                  key={opt.id || opt.size}
                   onClick={() => {
                     setBoxSize(opt.size);
                     if (totalSelected > opt.size) {
@@ -148,7 +154,7 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[360px] overflow-y-auto pr-2 custom-scrollbar">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[420px] overflow-y-auto pr-2 custom-scrollbar">
               {availableProducts.map((product) => {
                 const count: number = Number(counts[product.id] || 0);
                 const unitPrice = product.price !== undefined && product.price !== null
@@ -211,34 +217,6 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
             </div>
           </div>
 
-          {/* Step 3: Ribbon Selection */}
-          <div>
-            <label className="block text-xs uppercase tracking-widest text-[#D4AF37] font-semibold mb-3">
-              3. Selecione o acabamento do laço
-            </label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              {[
-                { name: 'Dourado Imperial', colorClass: 'bg-[#D4AF37]' },
-                { name: 'Cetim Café Nobre', colorClass: 'bg-[#382119]' },
-                { name: 'Rosa Queimado Delicate', colorClass: 'bg-[#C28285]' },
-                { name: 'Marfim Elegance', colorClass: 'bg-[#F4EBE1]' },
-              ].map((ribbon) => (
-                <button
-                  key={ribbon.name}
-                  onClick={() => setRibbonColor(ribbon.name)}
-                  className={`p-2.5 rounded-xl border text-xs flex items-center space-x-2 transition-all ${
-                    ribbonColor === ribbon.name
-                      ? 'border-[#D4AF37] bg-[#2C1A14] text-[#FAF7F2]'
-                      : 'border-[#2C1A14] bg-[#2C1A14]/30 text-[#E8DFD5]/70 hover:border-[#D4AF37]/30'
-                  }`}
-                >
-                  <span className={`w-3.5 h-3.5 rounded-full ${ribbon.colorClass} border border-white/20`} />
-                  <span className="text-[11px] font-medium truncate">{ribbon.name}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
         </div>
 
         {/* Right Column: Live Box Summary Card */}
@@ -255,7 +233,7 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
             </div>
 
             {/* List of items selected */}
-            <div className="space-y-2 mb-6 max-h-[180px] overflow-y-auto custom-scrollbar">
+            <div className="space-y-2 mb-6 max-h-[220px] overflow-y-auto custom-scrollbar">
               {Object.keys(counts).length === 0 ? (
                 <p className="text-xs italic text-[#E8DFD5]/60 text-center py-6">
                   Nenhum sabor selecionado. Adicione os brigadeiros desejados na lista.
@@ -285,11 +263,7 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
 
             <div className="border-t border-[#D4AF37]/20 pt-4 space-y-2 text-xs text-[#E8DFD5]">
               <div className="flex justify-between">
-                <span>Acabamento:</span>
-                <span className="font-medium text-[#FAF7F2]">{ribbonColor}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Caixa rígida gourmet:</span>
+                <span>Embalagem presenteável:</span>
                 <span className="text-emerald-400 font-medium">Inclusa</span>
               </div>
               <div className="flex justify-between pt-2 text-sm font-serif border-t border-[#FAF7F2]/10">
@@ -325,4 +299,5 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
     </div>
   );
 };
+
 
