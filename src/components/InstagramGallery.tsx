@@ -48,6 +48,9 @@ export const InstagramGallery: React.FC = () => {
                 src={post.imageUrl}
                 alt={post.caption}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/images/brigadeiros/placeholder-brigadeiro.webp';
+                }}
                 referrerPolicy="no-referrer"
               />
               {/* Overlay on hover */}

@@ -69,9 +69,12 @@ export const Events: React.FC<EventsProps> = ({ onOpenEventModal }) => {
           {/* Right Column Photo */}
           <div className="lg:col-span-5 relative min-h-[320px] lg:min-h-full">
             <img
-              src="/src/assets/images/encanto_event_table_1786355675509.jpg"
+              src="/images/eventos/eventos-mesa.webp"
               alt="Mesa de doces Encanto Gourmet em evento de gala"
               className="w-full h-full object-cover"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = '/images/brigadeiros/placeholder-brigadeiro.webp';
+              }}
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1F120E] via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#1F120E] lg:via-transparent lg:to-transparent" />

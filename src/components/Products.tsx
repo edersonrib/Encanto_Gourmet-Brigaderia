@@ -3,6 +3,7 @@ import { BRIGADEIRO_PRODUCTS } from '../data/products';
 import { fetchActiveProducts } from '../services/products';
 import { BrigadeiroProduct } from '../types';
 import { CustomBoxBuilder } from './CustomBoxBuilder';
+import { ProductImage } from './common/ProductImage';
 import { ShoppingBag, Gift, Info, RefreshCw } from 'lucide-react';
 
 interface ProductsProps {
@@ -146,9 +147,9 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
                   <div>
                     {/* Image Container with Badge */}
                     <div className="relative aspect-square overflow-hidden bg-[#FAF7F2]">
-                      <img
+                      <ProductImage
                         src={product.image}
-                        alt={`${product.name} - Encanto Gourmet`}
+                        alt={product.alt || `Brigadeiro Gourmet ${product.name} - Encanto Gourmet`}
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
@@ -222,9 +223,9 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
               ✕
             </button>
             <div className="flex items-center space-x-4 mb-4">
-              <img
+              <ProductImage
                 src={selectedProductForDetail.image}
-                alt={`${selectedProductForDetail.name} - Encanto Gourmet`}
+                alt={selectedProductForDetail.alt || `Brigadeiro Gourmet ${selectedProductForDetail.name}`}
                 className="w-20 h-20 rounded-xl object-cover border border-[#D4AF37]/30"
               />
               <div>

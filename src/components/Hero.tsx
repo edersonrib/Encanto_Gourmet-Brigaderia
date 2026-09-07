@@ -12,9 +12,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrderModal }) => {
       {/* Background Image with Luxury Vignette & Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/encanto_hero_brigadeiros_1786355634397.jpg"
+          src="/images/hero/hero-brigadeiros.webp"
           alt="Brigadeiros Gourmet Encanto Gourmet"
           className="w-full h-full object-cover object-center scale-105 filter brightness-75 contrast-110"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = '/images/brigadeiros/placeholder-brigadeiro.webp';
+          }}
           referrerPolicy="no-referrer"
         />
         {/* Soft dark gradient overlays */}

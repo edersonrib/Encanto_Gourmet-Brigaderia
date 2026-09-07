@@ -1,6 +1,6 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { BrigadeiroProduct, DatabaseProductRow } from '../types';
-import { BRIGADEIRO_PRODUCTS } from '../data/products';
+import { BRIGADEIRO_PRODUCTS, resolveProductImageUrl } from '../data/products';
 import { deleteProductImage } from './storage';
 
 // Helper to convert DB row to BrigadeiroProduct interface
@@ -14,7 +14,8 @@ export const mapDbRowToProduct = (row: DatabaseProductRow): BrigadeiroProduct =>
     price: Number(row.price) || 0,
     priceNote: row.price_note || (row.price ? `€ ${Number(row.price).toFixed(2)}/unid` : 'Sob consulta'),
     unitPriceEstimate: Number(row.price) || 5.0,
-    image: row.image_url || '/src/assets/images/encanto_hero_brigadeiros_1786355634397.jpg',
+    image: resolveProductImageUrl(row.image_url),
+    alt: row.name ? `Brigadeiro Gourmet ${row.name}` : 'Brigadeiro gourmet artesanal',
     image_path: row.image_path,
     badge: row.badge,
     ingredients: row.ingredients || 'Ingredientes selecionados e cacau nobre.',

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BRIGADEIRO_PRODUCTS } from '../data/products';
 import { BrigadeiroProduct, BoxSizeOption } from '../types';
 import { fetchActiveBoxOptions, DEFAULT_BOX_OPTIONS } from '../services/boxSettings';
+import { ProductImage } from './common/ProductImage';
 import { Plus, Minus, Check, Gift, ShoppingBag, Sparkles, AlertCircle } from 'lucide-react';
 
 interface CustomBoxBuilderProps {
@@ -171,11 +172,10 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
                     }`}
                   >
                     <div className="flex items-center space-x-3">
-                      <img
+                      <ProductImage
                         src={product.image}
-                        alt={product.name}
+                        alt={product.alt || `Brigadeiro Gourmet ${product.name}`}
                         className="w-11 h-11 rounded-lg object-cover border border-[#D4AF37]/30"
-                        referrerPolicy="no-referrer"
                       />
                       <div>
                         <h4 className="text-xs font-serif font-bold text-[#FAF7F2] line-clamp-1">

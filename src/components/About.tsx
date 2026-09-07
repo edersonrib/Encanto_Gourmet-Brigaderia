@@ -19,9 +19,12 @@ export const About: React.FC = () => {
               {/* Main Photo Frame */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-[#FFFDF9]">
                 <img
-                  src="/src/assets/images/encanto_about_craft_1786355649467.jpg"
+                  src="/images/sobre/sobre-artesanal.webp"
                   alt="Preparo artesanal do brigadeiro Encanto Gourmet"
                   className="w-full h-[420px] sm:h-[500px] object-cover hover:scale-105 transition-transform duration-700"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/images/brigadeiros/placeholder-brigadeiro.webp';
+                  }}
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2C1A14]/60 via-transparent to-transparent" />

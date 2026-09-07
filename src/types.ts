@@ -8,6 +8,7 @@ export interface BrigadeiroProduct {
   priceNote?: string; // e.g. "Preço estimativo sob consulta ou caixa com 4/9/16 unid."
   unitPriceEstimate?: number; // e.g. 5.50
   image: string; // image_url
+  alt?: string; // Descriptive alt text for accessibility and SEO
   image_path?: string; // Supabase storage path for deletion
   badge?: string;
   ingredients: string;
