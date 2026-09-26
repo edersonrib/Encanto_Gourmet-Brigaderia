@@ -210,7 +210,7 @@ export const AdminProductForm: React.FC = () => {
         <div className="mb-6">
           <Link
             to="/admin/products"
-            className="inline-flex items-center text-xs text-[#E8DFD5]/70 hover:text-[#D4AF37] transition-colors"
+            className="inline-flex items-center text-xs text-[#E8DFD5]/70 hover:text-[#D2A56A] transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-1.5" />
             <span>Voltar para a lista de produtos</span>
@@ -234,7 +234,7 @@ export const AdminProductForm: React.FC = () => {
         )}
 
         {/* Form Container */}
-        <form onSubmit={handleSubmit} className="bg-[#170D0B] border border-[#2C1A14] rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl">
+        <form onSubmit={handleSubmit} className="bg-[#170D0B] border border-[#541927] rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl">
           
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
 
@@ -252,7 +252,7 @@ export const AdminProductForm: React.FC = () => {
                   value={name}
                   onChange={handleNameChange}
                   required
-                  className="w-full bg-[#1F120E] border border-[#2C1A14] focus:border-[#D4AF37] rounded-xl py-2.5 px-3.5 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
+                  className="w-full bg-[#1F120E] border border-[#541927] focus:border-[#D2A56A] rounded-xl py-2.5 px-3.5 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
                 />
               </div>
 
@@ -265,7 +265,7 @@ export const AdminProductForm: React.FC = () => {
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full bg-[#1F120E] border border-[#2C1A14] focus:border-[#D4AF37] rounded-xl py-2.5 px-3 text-xs text-[#FAF7F2] focus:outline-none transition-colors"
+                    className="w-full bg-[#1F120E] border border-[#541927] focus:border-[#D2A56A] rounded-xl py-2.5 px-3 text-xs text-[#FAF7F2] focus:outline-none transition-colors"
                   >
                     <option value="tradicionais">Tradicionais & Clássicos</option>
                     <option value="gourmet_intenso">Gourmet & Cacau Intenso</option>
@@ -283,7 +283,7 @@ export const AdminProductForm: React.FC = () => {
                     placeholder="ex: O Clássico Incomparável"
                     value={tag}
                     onChange={(e) => setTag(e.target.value)}
-                    className="w-full bg-[#1F120E] border border-[#2C1A14] focus:border-[#D4AF37] rounded-xl py-2.5 px-3.5 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
+                    className="w-full bg-[#1F120E] border border-[#541927] focus:border-[#D2A56A] rounded-xl py-2.5 px-3.5 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -301,7 +301,7 @@ export const AdminProductForm: React.FC = () => {
                     placeholder="5.00"
                     value={price}
                     onChange={(e) => setPrice(parseFloat(e.target.value) || 0)}
-                    className="w-full bg-[#1F120E] border border-[#2C1A14] focus:border-[#D4AF37] rounded-xl py-2.5 px-3.5 text-xs text-[#FAF7F2] focus:outline-none transition-colors font-mono"
+                    className="w-full bg-[#1F120E] border border-[#541927] focus:border-[#D2A56A] rounded-xl py-2.5 px-3.5 text-xs text-[#FAF7F2] focus:outline-none transition-colors font-mono"
                   />
                 </div>
 
@@ -314,7 +314,7 @@ export const AdminProductForm: React.FC = () => {
                     placeholder="ex: Mais Pedido, Assinatura, Favorito"
                     value={badge}
                     onChange={(e) => setBadge(e.target.value)}
-                    className="w-full bg-[#1F120E] border border-[#2C1A14] focus:border-[#D4AF37] rounded-xl py-2.5 px-3.5 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
+                    className="w-full bg-[#1F120E] border border-[#541927] focus:border-[#D2A56A] rounded-xl py-2.5 px-3.5 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -330,7 +330,7 @@ export const AdminProductForm: React.FC = () => {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   required
-                  className="w-full bg-[#1F120E] border border-[#2C1A14] focus:border-[#D4AF37] rounded-xl p-3 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
+                  className="w-full bg-[#1F120E] border border-[#541927] focus:border-[#D2A56A] rounded-xl p-3 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
                 />
               </div>
 
@@ -344,7 +344,7 @@ export const AdminProductForm: React.FC = () => {
                   placeholder="ex: Leite condensado artesanal, manteiga extra, Chocolate Ao Leite Callebaut."
                   value={ingredients}
                   onChange={(e) => setIngredients(e.target.value)}
-                  className="w-full bg-[#1F120E] border border-[#2C1A14] focus:border-[#D4AF37] rounded-xl py-2.5 px-3.5 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
+                  className="w-full bg-[#1F120E] border border-[#541927] focus:border-[#D2A56A] rounded-xl py-2.5 px-3.5 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
                 />
               </div>
 
@@ -357,7 +357,7 @@ export const AdminProductForm: React.FC = () => {
                   placeholder="ex: A partir de R$ 5,00/unid (Caixas de 4, 9, 16 ou 25)"
                   value={priceNote}
                   onChange={(e) => setPriceNote(e.target.value)}
-                  className="w-full bg-[#1F120E] border border-[#2C1A14] focus:border-[#D4AF37] rounded-xl py-2.5 px-3.5 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
+                  className="w-full bg-[#1F120E] border border-[#541927] focus:border-[#D2A56A] rounded-xl py-2.5 px-3.5 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
                 />
               </div>
 
@@ -372,17 +372,17 @@ export const AdminProductForm: React.FC = () => {
                   Foto do Produto: <span className="text-red-400">*</span>
                 </label>
 
-                <div className="border-2 border-dashed border-[#2C1A14] hover:border-[#D4AF37]/50 rounded-2xl p-4 text-center bg-[#1F120E] transition-colors relative">
+                <div className="border-2 border-dashed border-[#541927] hover:border-[#D2A56A]/50 rounded-2xl p-4 text-center bg-[#1F120E] transition-colors relative">
                   
                   {imagePreview ? (
                     <div className="relative group">
                       <img
                         src={imagePreview}
                         alt="Preview"
-                        className="w-full aspect-square object-cover rounded-xl border border-[#D4AF37]/30 shadow-md"
+                        className="w-full aspect-square object-cover rounded-xl border border-[#D2A56A]/30 shadow-md"
                       />
                       <div className="absolute inset-0 bg-black/60 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-2">
-                        <label className="cursor-pointer px-3 py-1.5 bg-[#D4AF37] text-[#1F120E] font-semibold text-[10px] rounded-lg shadow-md hover:bg-[#C59B27] transition-colors">
+                        <label className="cursor-pointer px-3 py-1.5 bg-[#D2A56A] text-[#1F120E] font-semibold text-[10px] rounded-lg shadow-md hover:bg-[#C2955B] transition-colors">
                           Trocar Foto
                           <input
                             type="file"
@@ -395,7 +395,7 @@ export const AdminProductForm: React.FC = () => {
                     </div>
                   ) : (
                     <label className="cursor-pointer block py-8 space-y-2">
-                      <div className="w-12 h-12 mx-auto rounded-xl bg-[#2C1A14] flex items-center justify-center text-[#D4AF37]">
+                      <div className="w-12 h-12 mx-auto rounded-xl bg-[#541927] flex items-center justify-center text-[#D2A56A]">
                         <Upload className="w-6 h-6" />
                       </div>
                       <span className="block text-xs font-medium text-[#FAF7F2]">
@@ -417,8 +417,8 @@ export const AdminProductForm: React.FC = () => {
               </div>
 
               {/* Display Settings */}
-              <div className="p-4 bg-[#1F120E] border border-[#2C1A14] rounded-2xl space-y-4">
-                <span className="text-xs font-semibold text-[#D4AF37] uppercase tracking-wider block border-b border-[#2C1A14] pb-2">
+              <div className="p-4 bg-[#1F120E] border border-[#541927] rounded-2xl space-y-4">
+                <span className="text-xs font-semibold text-[#D2A56A] uppercase tracking-wider block border-b border-[#541927] pb-2">
                   Configurações de Exibição
                 </span>
 
@@ -428,7 +428,7 @@ export const AdminProductForm: React.FC = () => {
                     type="checkbox"
                     checked={active}
                     onChange={(e) => setActive(e.target.checked)}
-                    className="w-4 h-4 accent-[#D4AF37] cursor-pointer"
+                    className="w-4 h-4 accent-[#D2A56A] cursor-pointer"
                   />
                 </div>
 
@@ -438,7 +438,7 @@ export const AdminProductForm: React.FC = () => {
                     type="checkbox"
                     checked={featured}
                     onChange={(e) => setFeatured(e.target.checked)}
-                    className="w-4 h-4 accent-[#D4AF37] cursor-pointer"
+                    className="w-4 h-4 accent-[#D2A56A] cursor-pointer"
                   />
                 </div>
 
@@ -450,7 +450,7 @@ export const AdminProductForm: React.FC = () => {
                     type="number"
                     value={displayOrder}
                     onChange={(e) => setDisplayOrder(parseInt(e.target.value) || 0)}
-                    className="w-full bg-[#170D0B] border border-[#2C1A14] rounded-lg py-1.5 px-3 text-xs text-[#FAF7F2] font-mono"
+                    className="w-full bg-[#170D0B] border border-[#541927] rounded-lg py-1.5 px-3 text-xs text-[#FAF7F2] font-mono"
                   />
                   <span className="text-[10px] text-[#E8DFD5]/50 mt-1 block">
                     Números menores aparecem primeiro.
@@ -463,10 +463,10 @@ export const AdminProductForm: React.FC = () => {
           </div>
 
           {/* Form Action Buttons */}
-          <div className="pt-6 border-t border-[#2C1A14] flex items-center justify-end space-x-3">
+          <div className="pt-6 border-t border-[#541927] flex items-center justify-end space-x-3">
             <Link
               to="/admin/products"
-              className="px-5 py-3 rounded-xl border border-[#2C1A14] hover:bg-[#2C1A14] text-xs font-semibold text-[#E8DFD5]/80 hover:text-[#FAF7F2] transition-colors"
+              className="px-5 py-3 rounded-xl border border-[#541927] hover:bg-[#541927] text-xs font-semibold text-[#E8DFD5]/80 hover:text-[#FAF7F2] transition-colors"
             >
               Cancelar
             </Link>
@@ -474,7 +474,7 @@ export const AdminProductForm: React.FC = () => {
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-3 bg-gradient-to-r from-[#D4AF37] to-[#B89428] hover:from-[#E5C148] hover:to-[#D4AF37] text-[#1F120E] font-semibold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all flex items-center space-x-2 disabled:opacity-50"
+              className="px-6 py-3 bg-[#D2A56A] hover:bg-[#C2955B] text-[#1F120E] font-semibold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all flex items-center space-x-2 disabled:opacity-50"
             >
               {loading ? (
                 <span>Salvando no Supabase...</span>

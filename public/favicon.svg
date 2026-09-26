@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E2B96A"/>
-      <stop offset="50%" stop-color="#D09F49"/>
-      <stop offset="100%" stop-color="#BE8932"/>
+      <stop offset="0%" stop-color="#D2A56A"/>
+      <stop offset="50%" stop-color="#D2A56A"/>
+      <stop offset="100%" stop-color="#C2955B"/>
     </linearGradient>
   </defs>
 
   <!-- Solid Rich Burgundy Background -->
-  <rect width="512" height="512" fill="#521B29" rx="64" />
+  <rect width="512" height="512" fill="#541927" rx="64" />
 
   <!-- Outer Double Circular Hand-crafted Frame -->
   <circle cx="256" cy="256" r="226" fill="none" stroke="url(#goldGrad)" stroke-width="6.5" stroke-linecap="round" />

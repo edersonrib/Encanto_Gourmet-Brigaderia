@@ -178,7 +178,7 @@ export const AdminBoxSizes: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
           <h3 className="font-serif text-lg font-bold text-[#FAF7F2] flex items-center">
-            <Gift className="w-5 h-5 text-[#D4AF37] mr-2" />
+            <Gift className="w-5 h-5 text-[#D2A56A] mr-2" />
             Opções de Caixas Ativas
           </h3>
           <p className="text-xs text-[#E8DFD5]/70 mt-0.5">
@@ -190,7 +190,7 @@ export const AdminBoxSizes: React.FC = () => {
           <button
             onClick={handleResetDefaults}
             type="button"
-            className="px-3.5 py-2.5 rounded-xl bg-[#2C1A14] hover:bg-[#382119] text-[#E8DFD5] hover:text-[#FAF7F2] border border-[#D4AF37]/30 text-xs font-medium transition-all flex items-center space-x-1.5"
+            className="px-3.5 py-2.5 rounded-xl bg-[#541927] hover:bg-[#541927] text-[#E8DFD5] hover:text-[#FAF7F2] border border-[#D2A56A]/30 text-xs font-medium transition-all flex items-center space-x-1.5"
             title="Restaurar tamanhos padrão (4, 9, 16, 25)"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -200,7 +200,7 @@ export const AdminBoxSizes: React.FC = () => {
           <button
             onClick={handleOpenNew}
             type="button"
-            className="px-4 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#C59B27] text-[#1F120E] text-xs font-semibold uppercase tracking-wider shadow-lg transition-all flex items-center space-x-2"
+            className="px-4 py-2.5 rounded-xl bg-[#D2A56A] hover:bg-[#C2955B] text-[#1F120E] text-xs font-semibold uppercase tracking-wider shadow-lg transition-all flex items-center space-x-2"
           >
             <PlusCircle className="w-4 h-4" />
             <span>Novo Tamanho</span>
@@ -210,10 +210,10 @@ export const AdminBoxSizes: React.FC = () => {
 
       {/* Modal / Inline Form for Add or Edit */}
       {isEditing && (
-        <div className="mb-8 bg-[#2C1A14] border border-[#D4AF37]/40 rounded-2xl p-6 animate-fadeIn shadow-2xl">
-          <div className="flex items-center justify-between pb-4 border-b border-[#D4AF37]/20 mb-5">
+        <div className="mb-8 bg-[#541927] border border-[#D2A56A]/40 rounded-2xl p-6 animate-fadeIn shadow-2xl">
+          <div className="flex items-center justify-between pb-4 border-b border-[#D2A56A]/20 mb-5">
             <h4 className="font-serif text-base font-bold text-[#FAF7F2] flex items-center">
-              <Sparkles className="w-4 h-4 text-[#D4AF37] mr-2" />
+              <Sparkles className="w-4 h-4 text-[#D2A56A] mr-2" />
               {editingId ? 'Editar Tamanho de Caixa' : 'Cadastrar Novo Tamanho de Caixa'}
             </h4>
             <button
@@ -227,7 +227,7 @@ export const AdminBoxSizes: React.FC = () => {
           <form onSubmit={handleSave} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs uppercase font-semibold text-[#D4AF37] mb-1.5">
+                <label className="block text-xs uppercase font-semibold text-[#D2A56A] mb-1.5">
                   Quantidade de Unidades (Tamanho) *
                 </label>
                 <input
@@ -237,7 +237,7 @@ export const AdminBoxSizes: React.FC = () => {
                   required
                   value={sizeInput}
                   onChange={(e) => setSizeInput(parseInt(e.target.value) || 0)}
-                  className="w-full bg-[#1F120E] border border-[#D4AF37]/30 rounded-xl p-3 text-xs text-[#FAF7F2] focus:outline-none focus:border-[#D4AF37]"
+                  className="w-full bg-[#1F120E] border border-[#D2A56A]/30 rounded-xl p-3 text-xs text-[#FAF7F2] focus:outline-none focus:border-[#D2A56A]"
                   placeholder="Ex: 6, 8, 12, 20"
                 />
                 <p className="text-[10px] text-[#E8DFD5]/60 mt-1">
@@ -246,7 +246,7 @@ export const AdminBoxSizes: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs uppercase font-semibold text-[#D4AF37] mb-1.5">
+                <label className="block text-xs uppercase font-semibold text-[#D2A56A] mb-1.5">
                   Nome / Rótulo da Caixa *
                 </label>
                 <input
@@ -254,7 +254,7 @@ export const AdminBoxSizes: React.FC = () => {
                   required
                   value={labelInput}
                   onChange={(e) => setLabelInput(e.target.value)}
-                  className="w-full bg-[#1F120E] border border-[#D4AF37]/30 rounded-xl p-3 text-xs text-[#FAF7F2] focus:outline-none focus:border-[#D4AF37]"
+                  className="w-full bg-[#1F120E] border border-[#D2A56A]/30 rounded-xl p-3 text-xs text-[#FAF7F2] focus:outline-none focus:border-[#D2A56A]"
                   placeholder="Ex: Caixa Degustação, Caixa Especial, Caixa Luxo"
                 />
                 <p className="text-[10px] text-[#E8DFD5]/60 mt-1">
@@ -269,14 +269,14 @@ export const AdminBoxSizes: React.FC = () => {
                 id="activeBoxCheck"
                 checked={activeInput}
                 onChange={(e) => setActiveInput(e.target.checked)}
-                className="w-4 h-4 rounded text-[#D4AF37] bg-[#1F120E] border-[#D4AF37]/30 focus:ring-[#D4AF37]"
+                className="w-4 h-4 rounded text-[#D2A56A] bg-[#1F120E] border-[#D2A56A]/30 focus:ring-[#D2A56A]"
               />
               <label htmlFor="activeBoxCheck" className="text-xs text-[#FAF7F2] cursor-pointer">
                 Tamanho Ativo (visível no configurador da Landing Page)
               </label>
             </div>
 
-            <div className="flex items-center justify-end space-x-3 pt-4 border-t border-[#D4AF37]/20">
+            <div className="flex items-center justify-end space-x-3 pt-4 border-t border-[#D2A56A]/20">
               <button
                 type="button"
                 onClick={handleCancelEdit}
@@ -286,7 +286,7 @@ export const AdminBoxSizes: React.FC = () => {
               </button>
               <button
                 type="submit"
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#E5C378] to-[#D4AF37] text-[#1F120E] text-xs font-semibold uppercase tracking-wider shadow-lg flex items-center space-x-2 hover:opacity-90 transition-opacity"
+                className="px-5 py-2.5 rounded-xl bg-[#D2A56A] hover:bg-[#C2955B] text-[#1F120E] text-xs font-semibold uppercase tracking-wider shadow-lg flex items-center space-x-2 hover:opacity-90 transition-opacity"
               >
                 <Save className="w-4 h-4" />
                 <span>Salvar Configuração</span>
@@ -297,7 +297,7 @@ export const AdminBoxSizes: React.FC = () => {
       )}
 
       {/* Box Sizes Grid / Table */}
-      <div className="bg-[#170D0B] border border-[#2C1A14] rounded-2xl overflow-hidden">
+      <div className="bg-[#170D0B] border border-[#541927] rounded-2xl overflow-hidden">
         {loading ? (
           <div className="text-center py-12 text-xs text-[#E8DFD5]/60">
             Carregando opções de tamanhos de caixas...
@@ -307,21 +307,21 @@ export const AdminBoxSizes: React.FC = () => {
             <p>Nenhum tamanho de caixa cadastrado.</p>
             <button
               onClick={handleResetDefaults}
-              className="px-4 py-2 rounded-xl bg-[#D4AF37] text-[#1F120E] text-xs font-semibold"
+              className="px-4 py-2 rounded-xl bg-[#D2A56A] text-[#1F120E] text-xs font-semibold"
             >
               Restaurar Padrões (4, 9, 16, 25)
             </button>
           </div>
         ) : (
-          <div className="divide-y divide-[#2C1A14]">
+          <div className="divide-y divide-[#541927]">
             {boxOptions.map((opt) => (
               <div
                 key={opt.id}
                 className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#1F120E]/50 transition-colors"
               >
                 <div className="flex items-center space-x-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2C1A14] to-[#1F120E] border border-[#D4AF37]/40 flex flex-col items-center justify-center text-center shrink-0">
-                    <span className="font-serif text-lg font-bold text-[#D4AF37] leading-none">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#541927] to-[#1F120E] border border-[#D2A56A]/40 flex flex-col items-center justify-center text-center shrink-0">
+                    <span className="font-serif text-lg font-bold text-[#D2A56A] leading-none">
                       {opt.size}
                     </span>
                     <span className="text-[9px] text-[#E8DFD5]/70 uppercase tracking-tighter">
@@ -355,7 +355,7 @@ export const AdminBoxSizes: React.FC = () => {
                     onClick={() => handleToggleActive(opt.id, opt.active)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
                       opt.active
-                        ? 'bg-[#2C1A14] text-[#E8DFD5]/80 hover:text-amber-300'
+                        ? 'bg-[#541927] text-[#E8DFD5]/80 hover:text-[#D2A56A]'
                         : 'bg-emerald-950/60 text-emerald-300 hover:bg-emerald-900/60'
                     }`}
                   >
@@ -364,7 +364,7 @@ export const AdminBoxSizes: React.FC = () => {
 
                   <button
                     onClick={() => handleOpenEdit(opt)}
-                    className="p-2 text-[#E8DFD5]/70 hover:text-[#D4AF37] hover:bg-[#2C1A14] rounded-xl transition-colors"
+                    className="p-2 text-[#E8DFD5]/70 hover:text-[#D2A56A] hover:bg-[#541927] rounded-xl transition-colors"
                     title="Editar tamanho"
                   >
                     <Edit2 className="w-4 h-4" />

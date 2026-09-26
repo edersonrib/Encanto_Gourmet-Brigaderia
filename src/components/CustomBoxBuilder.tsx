@@ -75,11 +75,11 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
   };
 
   return (
-    <div className="bg-[#1F120E] text-[#FAF7F2] rounded-3xl p-6 sm:p-10 border border-[#D4AF37]/30 shadow-2xl relative overflow-hidden">
+    <div className="bg-[#1F120E] text-[#FAF7F2] rounded-3xl p-6 sm:p-10 border border-[#D2A56A]/30 shadow-2xl relative overflow-hidden">
       
       {/* Header of Configurator */}
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-xs text-[#E5C378] font-semibold tracking-widest uppercase mb-3">
+        <span className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#D2A56A]/20 border border-[#D2A56A]/40 text-xs text-[#D2A56A] font-semibold tracking-widest uppercase mb-3">
           <Gift className="w-3.5 h-3.5 mr-1" /> Montar Sua Caixa Personalizada
         </span>
         <h3 className="font-serif-display text-3xl sm:text-4xl text-[#FAF7F2] font-light">
@@ -97,7 +97,7 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
           
           {/* Step 1: Dynamic Box Size Selection */}
           <div>
-            <label className="block text-xs uppercase tracking-widest text-[#D4AF37] font-semibold mb-3">
+            <label className="block text-xs uppercase tracking-widest text-[#D2A56A] font-semibold mb-3">
               1. Selecione o tamanho da caixa
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -112,11 +112,11 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
                   }}
                   className={`p-4 rounded-xl border text-center transition-all duration-300 ${
                     boxSize === opt.size
-                      ? 'bg-gradient-to-b from-[#D4AF37]/20 to-[#1F120E] border-[#D4AF37] shadow-lg shadow-[#D4AF37]/10'
-                      : 'bg-[#2C1A14]/60 border-[#2C1A14] hover:border-[#D4AF37]/40 text-[#FAF7F2]/70'
+                      ? 'bg-gradient-to-b from-[#D2A56A]/20 to-[#1F120E] border-[#D2A56A] shadow-lg shadow-[#D2A56A]/10'
+                      : 'bg-[#541927]/60 border-[#541927] hover:border-[#D2A56A]/40 text-[#FAF7F2]/70'
                   }`}
                 >
-                  <span className="block font-serif text-xl sm:text-2xl font-bold text-[#D4AF37] mb-1">
+                  <span className="block font-serif text-xl sm:text-2xl font-bold text-[#D2A56A] mb-1">
                     {opt.size} <span className="text-xs font-normal text-[#FAF7F2]">unid.</span>
                   </span>
                   <span className="block text-[11px] text-[#E8DFD5] font-medium leading-tight">
@@ -130,13 +130,13 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
           {/* Step 2: Flavor Picking Grid */}
           <div>
             <div className="flex items-center justify-between mb-3">
-              <label className="block text-xs uppercase tracking-widest text-[#D4AF37] font-semibold">
+              <label className="block text-xs uppercase tracking-widest text-[#D2A56A] font-semibold">
                 2. Escolha os sabores ({totalSelected} / {boxSize} selecionados)
               </label>
               {totalSelected > 0 && (
                 <button
                   onClick={handleReset}
-                  className="text-xs text-[#E8DFD5]/60 hover:text-[#D4AF37] underline transition-colors"
+                  className="text-xs text-[#E8DFD5]/60 hover:text-[#D2A56A] underline transition-colors"
                 >
                   Limpar seleção
                 </button>
@@ -144,12 +144,12 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
             </div>
 
             {/* Progress Bar */}
-            <div className="w-full h-2 bg-[#2C1A14] rounded-full overflow-hidden mb-6 border border-[#D4AF37]/20">
+            <div className="w-full h-2 bg-[#541927] rounded-full overflow-hidden mb-6 border border-[#D2A56A]/20">
               <div
                 className={`h-full transition-all duration-500 ${
                   totalSelected === boxSize
-                    ? 'bg-gradient-to-r from-[#D4AF37] to-[#E5C378]'
-                    : 'bg-[#D4AF37]/60'
+                    ? 'bg-[#D2A56A]'
+                    : 'bg-[#D2A56A]/60'
                 }`}
                 style={{ width: `${Math.min((totalSelected / boxSize) * 100, 100)}%` }}
               />
@@ -167,15 +167,15 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
                     key={product.id}
                     className={`p-3.5 rounded-xl border flex items-center justify-between transition-colors ${
                       count > 0
-                        ? 'bg-[#2C1A14] border-[#D4AF37]/60'
-                        : 'bg-[#2C1A14]/40 border-[#2C1A14] hover:border-[#D4AF37]/30'
+                        ? 'bg-[#541927] border-[#D2A56A]/60'
+                        : 'bg-[#541927]/40 border-[#541927] hover:border-[#D2A56A]/30'
                     }`}
                   >
                     <div className="flex items-center space-x-3">
                       <ProductImage
                         src={product.image}
                         alt={product.alt || `Brigadeiro Gourmet ${product.name}`}
-                        className="w-11 h-11 rounded-lg object-cover border border-[#D4AF37]/30"
+                        className="w-11 h-11 rounded-lg object-cover border border-[#D2A56A]/30"
                       />
                       <div>
                         <h4 className="text-xs font-serif font-bold text-[#FAF7F2] line-clamp-1">
@@ -184,7 +184,7 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
                         <div className="flex items-center space-x-1.5 text-[10px] text-[#E8DFD5]/70">
                           <span className="line-clamp-1">{product.tag || 'Gourmet'}</span>
                           <span>•</span>
-                          <span className="text-[#D4AF37] font-semibold whitespace-nowrap">
+                          <span className="text-[#D2A56A] font-semibold whitespace-nowrap">
                             R$ {unitPrice.toFixed(2).replace('.', ',')}
                           </span>
                         </div>
@@ -192,21 +192,21 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
                     </div>
 
                     {/* Counter Buttons */}
-                    <div className="flex items-center space-x-2 bg-[#1F120E] p-1 rounded-lg border border-[#D4AF37]/20">
+                    <div className="flex items-center space-x-2 bg-[#1F120E] p-1 rounded-lg border border-[#D2A56A]/20">
                       <button
                         onClick={() => handleDecrement(product.id)}
                         disabled={count <= 0}
-                        className="w-6 h-6 rounded flex items-center justify-center text-xs text-[#FAF7F2] disabled:opacity-30 hover:bg-[#D4AF37]/20"
+                        className="w-6 h-6 rounded flex items-center justify-center text-xs text-[#FAF7F2] disabled:opacity-30 hover:bg-[#D2A56A]/20"
                       >
                         <Minus className="w-3 h-3" />
                       </button>
-                      <span className="w-5 text-center text-xs font-semibold text-[#D4AF37]">
+                      <span className="w-5 text-center text-xs font-semibold text-[#D2A56A]">
                         {count}
                       </span>
                       <button
                         onClick={() => handleIncrement(product.id)}
                         disabled={totalSelected >= boxSize}
-                        className="w-6 h-6 rounded flex items-center justify-center text-xs text-[#FAF7F2] disabled:opacity-30 hover:bg-[#D4AF37]/20"
+                        className="w-6 h-6 rounded flex items-center justify-center text-xs text-[#FAF7F2] disabled:opacity-30 hover:bg-[#D2A56A]/20"
                       >
                         <Plus className="w-3 h-3" />
                       </button>
@@ -220,14 +220,14 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
         </div>
 
         {/* Right Column: Live Box Summary Card */}
-        <div className="lg:col-span-4 bg-[#2C1A14] p-6 rounded-2xl border border-[#D4AF37]/30 flex flex-col justify-between sticky top-28">
+        <div className="lg:col-span-4 bg-[#541927] p-6 rounded-2xl border border-[#D2A56A]/30 flex flex-col justify-between sticky top-28">
           <div>
-            <div className="flex items-center justify-between border-b border-[#D4AF37]/20 pb-4 mb-4">
+            <div className="flex items-center justify-between border-b border-[#D2A56A]/20 pb-4 mb-4">
               <div className="flex items-center space-x-2">
-                <Gift className="w-5 h-5 text-[#D4AF37]" />
+                <Gift className="w-5 h-5 text-[#D2A56A]" />
                 <h4 className="font-serif text-lg text-[#FAF7F2] font-semibold">Resumo da Caixa</h4>
               </div>
-              <span className="text-xs bg-[#D4AF37]/20 text-[#D4AF37] px-2.5 py-1 rounded-full font-semibold">
+              <span className="text-xs bg-[#D2A56A]/20 text-[#D2A56A] px-2.5 py-1 rounded-full font-semibold">
                 {boxSize} Unidades
               </span>
             </div>
@@ -253,7 +253,7 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
                         <span className="text-[11px] text-[#FAF7F2]/60">
                           R$ {(itemPrice * count).toFixed(2).replace('.', ',')}
                         </span>
-                        <span className="font-semibold text-[#D4AF37]">{count}x</span>
+                        <span className="font-semibold text-[#D2A56A]">{count}x</span>
                       </div>
                     </div>
                   );
@@ -261,21 +261,21 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
               )}
             </div>
 
-            <div className="border-t border-[#D4AF37]/20 pt-4 space-y-2 text-xs text-[#E8DFD5]">
+            <div className="border-t border-[#D2A56A]/20 pt-4 space-y-2 text-xs text-[#E8DFD5]">
               <div className="flex justify-between">
                 <span>Embalagem presenteável:</span>
                 <span className="text-emerald-400 font-medium">Inclusa</span>
               </div>
               <div className="flex justify-between pt-2 text-sm font-serif border-t border-[#FAF7F2]/10">
                 <span className="font-semibold text-[#FAF7F2]">Valor Total:</span>
-                <span className="font-bold text-[#D4AF37]">R$ {estimatedPrice.toFixed(2).replace('.', ',')}</span>
+                <span className="font-bold text-[#D2A56A]">R$ {estimatedPrice.toFixed(2).replace('.', ',')}</span>
               </div>
             </div>
           </div>
 
           <div className="mt-6 pt-4">
             {totalSelected < boxSize && (
-              <p className="text-[11px] text-amber-300/80 mb-3 flex items-center justify-center">
+              <p className="text-[11px] text-[#D2A56A]/90 mb-3 flex items-center justify-center">
                 <AlertCircle className="w-3.5 h-3.5 mr-1 inline" />
                 Faltam {boxSize - totalSelected} brigadeiros para completar a caixa.
               </p>
@@ -285,7 +285,7 @@ export const CustomBoxBuilder: React.FC<CustomBoxBuilderProps> = ({ products, on
               onClick={handleFinishBox}
               disabled={totalSelected === 0}
               id="custom-box-order-btn"
-              className="w-full py-3.5 px-4 text-xs font-semibold uppercase tracking-widest bg-gradient-to-r from-[#E5C378] via-[#D4AF37] to-[#C59B27] text-[#1F120E] rounded-xl shadow-lg hover:shadow-[#D4AF37]/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center space-x-2"
+              className="w-full py-3.5 px-4 text-xs font-semibold uppercase tracking-widest bg-[#D2A56A] hover:bg-[#C2955B] text-[#1F120E] rounded-xl shadow-lg hover:shadow-[#D2A56A]/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center space-x-2"
             >
               <ShoppingBag className="w-4 h-4" />
               <span>Pedir Caixa via WhatsApp</span>

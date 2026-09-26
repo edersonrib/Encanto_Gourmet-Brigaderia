@@ -16,16 +16,16 @@ export const Events: React.FC<EventsProps> = ({ onOpenEventModal }) => {
   ];
 
   return (
-    <section id="eventos" className="py-24 bg-[#FAF7F2] text-[#2C1A14] relative overflow-hidden">
+    <section id="eventos" className="py-24 bg-[#FAF7F2] text-[#541927] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Banner Card Container */}
-        <div className="bg-[#1F120E] text-[#FAF7F2] rounded-3xl overflow-hidden shadow-2xl border border-[#D4AF37]/30 grid grid-cols-1 lg:grid-cols-12">
+        <div className="bg-[#1F120E] text-[#FAF7F2] rounded-3xl overflow-hidden shadow-2xl border border-[#D2A56A]/30 grid grid-cols-1 lg:grid-cols-12">
           
           {/* Left Text & Occasions Column */}
           <div className="lg:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
             <div>
-              <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D4AF37] block mb-3">
+              <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D2A56A] block mb-3">
                 Encomendas Especiais & Eventos
               </span>
               <h2 className="font-serif-display text-3xl sm:text-5xl font-light leading-tight text-[#FAF7F2] mb-4">
@@ -40,8 +40,8 @@ export const Events: React.FC<EventsProps> = ({ onOpenEventModal }) => {
                 {eventTypes.map((item, index) => {
                   const Icon = item.icon;
                   return (
-                    <div key={index} className="flex items-start space-x-3 p-3 rounded-xl bg-[#2C1A14]/60 border border-[#D4AF37]/20">
-                      <div className="p-2 rounded-lg bg-[#D4AF37]/20 text-[#D4AF37] mt-0.5">
+                    <div key={index} className="flex items-start space-x-3 p-3 rounded-xl bg-[#541927]/60 border border-[#D2A56A]/20">
+                      <div className="p-2 rounded-lg bg-[#D2A56A]/20 text-[#D2A56A] mt-0.5">
                         <Icon className="w-4 h-4" />
                       </div>
                       <div>
@@ -58,7 +58,7 @@ export const Events: React.FC<EventsProps> = ({ onOpenEventModal }) => {
               <button
                 onClick={onOpenEventModal}
                 id="events-cta-btn"
-                className="inline-flex items-center space-x-3 px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#1F120E] bg-gradient-to-r from-[#E5C378] via-[#D4AF37] to-[#C59B27] rounded-full shadow-xl hover:shadow-[#D4AF37]/20 hover:scale-[1.02] active:scale-[0.98] transition-all group"
+                className="inline-flex items-center space-x-3 px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#1F120E] bg-[#D2A56A] hover:bg-[#C2955B] rounded-full shadow-xl hover:shadow-[#D2A56A]/20 hover:scale-[1.02] active:scale-[0.98] transition-all group"
               >
                 <span>Fazer uma encomenda para evento</span>
                 <ArrowRight className="w-4 h-4 text-[#1F120E] group-hover:translate-x-1 transition-transform" />
@@ -78,8 +78,8 @@ export const Events: React.FC<EventsProps> = ({ onOpenEventModal }) => {
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1F120E] via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#1F120E] lg:via-transparent lg:to-transparent" />
-            <div className="absolute bottom-6 right-6 bg-[#1F120E]/80 backdrop-blur-md px-4 py-2 rounded-xl border border-[#D4AF37]/30 text-right">
-              <span className="text-[10px] uppercase font-semibold text-[#D4AF37] tracking-widest block">Consultoria de Doces</span>
+            <div className="absolute bottom-6 right-6 bg-[#1F120E]/80 backdrop-blur-md px-4 py-2 rounded-xl border border-[#D2A56A]/30 text-right">
+              <span className="text-[10px] uppercase font-semibold text-[#D2A56A] tracking-widest block">Consultoria de Doces</span>
               <span className="text-xs font-serif italic text-[#FAF7F2]">Atendimento sob medida para festas</span>
             </div>
           </div>

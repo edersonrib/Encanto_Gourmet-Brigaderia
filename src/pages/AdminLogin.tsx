@@ -45,10 +45,10 @@ export const AdminLogin: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#1F120E] text-[#FAF7F2] font-sans flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-[#170D0B] border border-[#2C1A14] rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+      <div className="max-w-md w-full bg-[#170D0B] border border-[#541927] rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
         
         {/* Glow Decoration */}
-        <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#D2A56A]/10 rounded-full blur-3xl pointer-events-none" />
 
         {/* Brand Header */}
         <div className="text-center mb-8">
@@ -57,7 +57,7 @@ export const AdminLogin: React.FC = () => {
             alt="Encanto Gourmet - Brigadeiria"
             className="h-20 sm:h-24 w-auto mx-auto mb-4 object-contain"
           />
-          <p className="text-xs text-[#D4AF37] uppercase tracking-widest font-semibold mt-1">
+          <p className="text-xs text-[#D2A56A] uppercase tracking-widest font-semibold mt-1">
             Painel Administrativo CMS
           </p>
           <p className="text-xs text-[#E8DFD5]/70 mt-2 font-light">
@@ -68,7 +68,7 @@ export const AdminLogin: React.FC = () => {
         {/* Supabase Notice Banner */}
         {!isSupabaseConfigured() && (
           <div className="mb-6 p-3.5 rounded-xl bg-amber-950/60 border border-amber-500/40 text-xs text-amber-200 leading-relaxed">
-            <div className="flex items-center font-semibold text-amber-300 mb-1">
+            <div className="flex items-center font-semibold text-[#D2A56A] mb-1">
               <Info className="w-4 h-4 mr-1.5 shrink-0" />
               <span>Acesso em Modo de Teste</span>
             </div>
@@ -107,7 +107,7 @@ export const AdminLogin: React.FC = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full bg-[#1F120E] border border-[#2C1A14] focus:border-[#D4AF37] rounded-xl py-2.5 pl-10 pr-3 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
+                className="w-full bg-[#1F120E] border border-[#541927] focus:border-[#D2A56A] rounded-xl py-2.5 pl-10 pr-3 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
               />
             </div>
           </div>
@@ -124,7 +124,7 @@ export const AdminLogin: React.FC = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full bg-[#1F120E] border border-[#2C1A14] focus:border-[#D4AF37] rounded-xl py-2.5 pl-10 pr-3 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
+                className="w-full bg-[#1F120E] border border-[#541927] focus:border-[#D2A56A] rounded-xl py-2.5 pl-10 pr-3 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
               />
             </div>
           </div>
@@ -132,7 +132,7 @@ export const AdminLogin: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 px-4 mt-2 bg-gradient-to-r from-[#D4AF37] to-[#B89428] hover:from-[#E5C148] hover:to-[#D4AF37] text-[#1F120E] font-semibold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2 disabled:opacity-50"
+            className="w-full py-3 px-4 mt-2 bg-[#D2A56A] hover:bg-[#C2955B] text-[#1F120E] font-semibold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2 disabled:opacity-50"
           >
             {loading ? (
               <span>Autenticando...</span>
@@ -145,10 +145,10 @@ export const AdminLogin: React.FC = () => {
           </button>
         </form>
 
-        <div className="mt-8 pt-4 border-t border-[#2C1A14] text-center">
+        <div className="mt-8 pt-4 border-t border-[#541927] text-center">
           <a
             href="/"
-            className="text-xs text-[#E8DFD5]/60 hover:text-[#D4AF37] transition-colors inline-flex items-center space-x-1"
+            className="text-xs text-[#E8DFD5]/60 hover:text-[#D2A56A] transition-colors inline-flex items-center space-x-1"
           >
             <span>← Voltar para a Landing Page</span>
           </a>

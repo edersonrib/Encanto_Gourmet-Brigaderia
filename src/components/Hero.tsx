@@ -29,18 +29,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrderModal }) => {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-[#FAF7F2] my-auto">
         
         {/* Top Tagline / Discrete Badges */}
-        <div className="inline-flex items-center space-x-2 sm:space-x-4 px-4 py-1.5 rounded-full bg-[#FAF7F2]/10 backdrop-blur-md border border-[#D4AF37]/30 text-xs sm:text-sm font-light tracking-widest text-[#E8DFD5] mb-8 animate-fadeIn">
-          <span className="flex items-center"><Award className="w-3.5 h-3.5 mr-1 text-[#D4AF37]" /> Artesanal</span>
-          <span className="text-[#D4AF37]">•</span>
-          <span className="flex items-center"><Sparkles className="w-3.5 h-3.5 mr-1 text-[#D4AF37]" /> Gourmet</span>
-          <span className="text-[#D4AF37]">•</span>
-          <span className="flex items-center"><Heart className="w-3.5 h-3.5 mr-1 text-[#D4AF37]" /> Feito com carinho</span>
+        <div className="inline-flex items-center space-x-2 sm:space-x-4 px-4 py-1.5 rounded-full bg-[#FAF7F2]/10 backdrop-blur-md border border-[#D2A56A]/30 text-xs sm:text-sm font-light tracking-widest text-[#E8DFD5] mb-8 animate-fadeIn">
+          <span className="flex items-center"><Award className="w-3.5 h-3.5 mr-1 text-[#D2A56A]" /> Artesanal</span>
+          <span className="text-[#D2A56A]">•</span>
+          <span className="flex items-center"><Sparkles className="w-3.5 h-3.5 mr-1 text-[#D2A56A]" /> Gourmet</span>
+          <span className="text-[#D2A56A]">•</span>
+          <span className="flex items-center"><Heart className="w-3.5 h-3.5 mr-1 text-[#D2A56A]" /> Feito com carinho</span>
         </div>
 
         {/* Main Heading */}
         <h1 className="font-serif-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-[#FAF7F2] leading-[1.08] tracking-tight mb-6">
           Pequenos momentos <br className="hidden sm:block" />
-          <span className="italic font-normal text-[#E5C378]">de encanto.</span>
+          <span className="italic font-normal text-[#D2A56A]">de encanto.</span>
         </h1>
 
         {/* Subtitle */}
@@ -53,7 +53,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrderModal }) => {
           <button
             onClick={onOpenOrderModal}
             id="hero-cta-encomendar"
-            className="w-full sm:w-auto px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[#1F120E] bg-gradient-to-r from-[#E5C378] via-[#D4AF37] to-[#C59B27] rounded-full shadow-xl hover:shadow-[#D4AF37]/30 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 flex items-center justify-center space-x-3 group"
+            className="w-full sm:w-auto px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[#1F120E] bg-[#D2A56A] hover:bg-[#C2955B] rounded-full shadow-xl hover:shadow-[#D2A56A]/30 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 flex items-center justify-center space-x-3 group"
           >
             <span>Encomendar agora</span>
             <ArrowRight className="w-4 h-4 text-[#1F120E] group-hover:translate-x-1 transition-transform" />
@@ -62,17 +62,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrderModal }) => {
           <a
             href="#produtos"
             id="hero-cta-conhecer"
-            className="w-full sm:w-auto px-8 py-4 text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-[#FAF7F2] bg-white/10 hover:bg-white/20 backdrop-blur-md border border-[#FAF7F2]/30 rounded-full transition-all duration-300 hover:border-[#D4AF37] text-center"
+            className="w-full sm:w-auto px-8 py-4 text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-[#FAF7F2] bg-white/10 hover:bg-white/20 backdrop-blur-md border border-[#FAF7F2]/30 rounded-full transition-all duration-300 hover:border-[#D2A56A] text-center"
           >
             Conhecer os brigadeiros
           </a>
         </div>
 
         {/* Subtle Decorative Line */}
-        <div className="mt-16 flex justify-center items-center space-x-3 text-[#D4AF37]/60">
-          <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#D4AF37]/60" />
-          <span className="text-xs font-serif italic tracking-widest text-[#E5C378]">Encanto Gourmet</span>
-          <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#D4AF37]/60" />
+        <div className="mt-16 flex justify-center items-center space-x-3 text-[#D2A56A]/60">
+          <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#D2A56A]/60" />
+          <span className="text-xs font-serif italic tracking-widest text-[#D2A56A]">Encanto Gourmet</span>
+          <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#D2A56A]/60" />
         </div>
 
       </div>
@@ -81,10 +81,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrderModal }) => {
       <a
         href="#sobre"
         aria-label="Rolar para baixo"
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[#FAF7F2]/60 hover:text-[#D4AF37] transition-colors animate-bounce"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[#FAF7F2]/60 hover:text-[#D2A56A] transition-colors animate-bounce"
       >
         <div className="w-6 h-10 rounded-full border border-[#FAF7F2]/30 flex items-start justify-center p-1">
-          <div className="w-1 h-2 bg-[#D4AF37] rounded-full animate-pulse" />
+          <div className="w-1 h-2 bg-[#D2A56A] rounded-full animate-pulse" />
         </div>
       </a>
 

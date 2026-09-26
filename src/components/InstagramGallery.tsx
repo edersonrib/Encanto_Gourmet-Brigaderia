@@ -4,15 +4,15 @@ import { Instagram, Heart, ExternalLink } from 'lucide-react';
 
 export const InstagramGallery: React.FC = () => {
   return (
-    <section className="py-24 bg-[#FAF7F2] text-[#2C1A14] relative">
+    <section className="py-24 bg-[#FAF7F2] text-[#541927] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D4AF37] block mb-2">
+          <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D2A56A] block mb-2">
             Redes Sociais
           </span>
-          <h2 className="font-serif-display text-3xl sm:text-4xl md:text-5xl font-light text-[#2C1A14] mb-3">
+          <h2 className="font-serif-display text-3xl sm:text-4xl md:text-5xl font-light text-[#541927] mb-3">
             Um pouco mais do nosso encanto.
           </h2>
           <p className="text-sm sm:text-base text-[#6E574F] font-light">
@@ -25,9 +25,9 @@ export const InstagramGallery: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               id="instagram-profile-link"
-              className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-[#1F120E] text-[#D4AF37] text-xs uppercase font-semibold tracking-widest hover:bg-[#2C1A14] hover:shadow-lg transition-all"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-[#1F120E] text-[#D2A56A] text-xs uppercase font-semibold tracking-widest hover:bg-[#541927] hover:shadow-lg transition-all"
             >
-              <Instagram className="w-4 h-4 text-[#D4AF37]" />
+              <Instagram className="w-4 h-4 text-[#D2A56A]" />
               <span>{INSTAGRAM_HANDLE}</span>
               <ExternalLink className="w-3.5 h-3.5 ml-1 text-[#E8DFD5]" />
             </a>
@@ -56,13 +56,13 @@ export const InstagramGallery: React.FC = () => {
               {/* Overlay on hover */}
               <div className="absolute inset-0 bg-[#1F120E]/75 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-between text-[#FAF7F2]">
                 <div className="flex items-center justify-end">
-                  <Instagram className="w-4 h-4 text-[#D4AF37]" />
+                  <Instagram className="w-4 h-4 text-[#D2A56A]" />
                 </div>
                 <p className="text-[10px] text-[#E8DFD5] line-clamp-3 italic">
                   "{post.caption}"
                 </p>
-                <div className="flex items-center space-x-1 text-[11px] font-semibold text-[#D4AF37]">
-                  <Heart className="w-3.5 h-3.5 fill-[#D4AF37]" />
+                <div className="flex items-center space-x-1 text-[11px] font-semibold text-[#D2A56A]">
+                  <Heart className="w-3.5 h-3.5 fill-[#D2A56A]" />
                   <span>{post.likes}</span>
                 </div>
               </div>

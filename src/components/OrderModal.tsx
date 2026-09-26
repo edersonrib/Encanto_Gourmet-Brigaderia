@@ -130,12 +130,12 @@ export const OrderModal: React.FC<OrderModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fadeIn overflow-y-auto">
-      <div className="bg-[#1F120E] text-[#FAF7F2] rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-[#D4AF37]/40 shadow-2xl relative my-8">
+      <div className="bg-[#1F120E] text-[#FAF7F2] rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-[#D2A56A]/40 shadow-2xl relative my-8">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 text-[#E8DFD5]/60 hover:text-[#FAF7F2] p-1.5 rounded-full bg-[#2C1A14] hover:bg-[#D4AF37] hover:text-[#1F120E] transition-colors"
+          className="absolute top-5 right-5 text-[#E8DFD5]/60 hover:text-[#FAF7F2] p-1.5 rounded-full bg-[#541927] hover:bg-[#D2A56A] hover:text-[#1F120E] transition-colors"
           id="close-order-modal"
         >
           <X className="w-5 h-5" />
@@ -143,7 +143,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
 
         {/* Modal Header */}
         <div className="text-center mb-6">
-          <span className="inline-flex items-center space-x-1 text-[10px] uppercase font-semibold text-[#D4AF37] tracking-widest bg-[#D4AF37]/10 px-3 py-1 rounded-full border border-[#D4AF37]/30 mb-2">
+          <span className="inline-flex items-center space-x-1 text-[10px] uppercase font-semibold text-[#D2A56A] tracking-widest bg-[#D2A56A]/10 px-3 py-1 rounded-full border border-[#D2A56A]/30 mb-2">
             <ShoppingBag className="w-3 h-3 mr-1" /> Pedido via WhatsApp
           </span>
           <h3 className="font-serif-display text-2xl sm:text-3xl text-[#FAF7F2] font-light">
@@ -158,7 +158,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
           
           {/* Order Type Selector */}
           <div>
-            <label className="block text-[11px] uppercase tracking-wider text-[#D4AF37] font-semibold mb-2">
+            <label className="block text-[11px] uppercase tracking-wider text-[#D2A56A] font-semibold mb-2">
               Tipo de Encomenda
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -167,8 +167,8 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                 onClick={() => setOrderType('individual')}
                 className={`p-2.5 rounded-xl border text-center text-xs font-medium transition-all ${
                   orderType === 'individual'
-                    ? 'bg-[#2C1A14] border-[#D4AF37] text-[#FAF7F2]'
-                    : 'bg-[#2C1A14]/30 border-[#2C1A14] text-[#E8DFD5]/60 hover:border-[#D4AF37]/30'
+                    ? 'bg-[#541927] border-[#D2A56A] text-[#FAF7F2]'
+                    : 'bg-[#541927]/30 border-[#541927] text-[#E8DFD5]/60 hover:border-[#D2A56A]/30'
                 }`}
               >
                 Sabor Individual
@@ -178,8 +178,8 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                 onClick={() => setOrderType('box')}
                 className={`p-2.5 rounded-xl border text-center text-xs font-medium transition-all ${
                   orderType === 'box'
-                    ? 'bg-[#2C1A14] border-[#D4AF37] text-[#FAF7F2]'
-                    : 'bg-[#2C1A14]/30 border-[#2C1A14] text-[#E8DFD5]/60 hover:border-[#D4AF37]/30'
+                    ? 'bg-[#541927] border-[#D2A56A] text-[#FAF7F2]'
+                    : 'bg-[#541927]/30 border-[#541927] text-[#E8DFD5]/60 hover:border-[#D2A56A]/30'
                 }`}
               >
                 Caixa Presente
@@ -189,8 +189,8 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                 onClick={() => setOrderType('event')}
                 className={`p-2.5 rounded-xl border text-center text-xs font-medium transition-all ${
                   orderType === 'event'
-                    ? 'bg-[#2C1A14] border-[#D4AF37] text-[#FAF7F2]'
-                    : 'bg-[#2C1A14]/30 border-[#2C1A14] text-[#E8DFD5]/60 hover:border-[#D4AF37]/30'
+                    ? 'bg-[#541927] border-[#D2A56A] text-[#FAF7F2]'
+                    : 'bg-[#541927]/30 border-[#541927] text-[#E8DFD5]/60 hover:border-[#D2A56A]/30'
                 }`}
               >
                 Evento / Festa
@@ -200,12 +200,12 @@ export const OrderModal: React.FC<OrderModalProps> = ({
 
           {/* Conditional Order Summary */}
           {orderType === 'box' && preselectedBox && (
-            <div className="p-4 rounded-xl bg-[#2C1A14] border border-[#D4AF37]/40 text-xs space-y-1">
-              <span className="text-[#D4AF37] font-semibold block">Caixa Configurada ({preselectedBox.boxSize} unid.):</span>
+            <div className="p-4 rounded-xl bg-[#541927] border border-[#D2A56A]/40 text-xs space-y-1">
+              <span className="text-[#D2A56A] font-semibold block">Caixa Configurada ({preselectedBox.boxSize} unid.):</span>
               <p className="text-[#E8DFD5] italic line-clamp-2">
                 Sabores: {preselectedBox.selectedFlavors.map(f => `${f.count}x ${f.product.name}`).join(', ')}
               </p>
-              <p className="font-bold text-[#D4AF37] pt-1">
+              <p className="font-bold text-[#D2A56A] pt-1">
                 Total Estimado: R$ {preselectedBox.totalPrice.toFixed(2).replace('.', ',')}
               </p>
             </div>
@@ -221,7 +221,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                     const p = BRIGADEIRO_PRODUCTS.find(x => x.id === e.target.value);
                     if (p) setSelectedProduct(p);
                   }}
-                  className="w-full bg-[#2C1A14] border border-[#D4AF37]/30 rounded-xl p-2.5 text-xs text-[#FAF7F2] focus:outline-none focus:border-[#D4AF37]"
+                  className="w-full bg-[#541927] border border-[#D2A56A]/30 rounded-xl p-2.5 text-xs text-[#FAF7F2] focus:outline-none focus:border-[#D2A56A]"
                 >
                   {BRIGADEIRO_PRODUCTS.map((p) => (
                     <option key={p.id} value={p.id}>{p.name}</option>
@@ -234,7 +234,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                 <select
                   value={productQuantity}
                   onChange={(e) => setProductQuantity(Number(e.target.value))}
-                  className="w-full bg-[#2C1A14] border border-[#D4AF37]/30 rounded-xl p-2.5 text-xs text-[#FAF7F2] focus:outline-none focus:border-[#D4AF37]"
+                  className="w-full bg-[#541927] border border-[#D2A56A]/30 rounded-xl p-2.5 text-xs text-[#FAF7F2] focus:outline-none focus:border-[#D2A56A]"
                 >
                   <option value={4}>4 unidades (Caixa Mini)</option>
                   <option value={9}>9 unidades (Caixa Degustação)</option>
@@ -257,9 +257,9 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                   placeholder="Ex: Maria Silva"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="w-full bg-[#2C1A14] border border-[#D4AF37]/30 rounded-xl p-2.5 pl-8 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/40 focus:outline-none focus:border-[#D4AF37]"
+                  className="w-full bg-[#541927] border border-[#D2A56A]/30 rounded-xl p-2.5 pl-8 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/40 focus:outline-none focus:border-[#D2A56A]"
                 />
-                <User className="w-3.5 h-3.5 text-[#D4AF37] absolute left-2.5 top-3" />
+                <User className="w-3.5 h-3.5 text-[#D2A56A] absolute left-2.5 top-3" />
               </div>
             </div>
 
@@ -271,9 +271,9 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                   placeholder="Ex: (11) 99999-9999"
                   value={customerPhone}
                   onChange={(e) => setCustomerPhone(e.target.value)}
-                  className="w-full bg-[#2C1A14] border border-[#D4AF37]/30 rounded-xl p-2.5 pl-8 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/40 focus:outline-none focus:border-[#D4AF37]"
+                  className="w-full bg-[#541927] border border-[#D2A56A]/30 rounded-xl p-2.5 pl-8 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/40 focus:outline-none focus:border-[#D2A56A]"
                 />
-                <Phone className="w-3.5 h-3.5 text-[#D4AF37] absolute left-2.5 top-3" />
+                <Phone className="w-3.5 h-3.5 text-[#D2A56A] absolute left-2.5 top-3" />
               </div>
             </div>
           </div>
@@ -286,9 +286,9 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                   type="date"
                   value={deliveryDate}
                   onChange={(e) => setDeliveryDate(e.target.value)}
-                  className="w-full bg-[#2C1A14] border border-[#D4AF37]/30 rounded-xl p-2.5 pl-8 text-xs text-[#FAF7F2] focus:outline-none focus:border-[#D4AF37]"
+                  className="w-full bg-[#541927] border border-[#D2A56A]/30 rounded-xl p-2.5 pl-8 text-xs text-[#FAF7F2] focus:outline-none focus:border-[#D2A56A]"
                 />
-                <Calendar className="w-3.5 h-3.5 text-[#D4AF37] absolute left-2.5 top-3" />
+                <Calendar className="w-3.5 h-3.5 text-[#D2A56A] absolute left-2.5 top-3" />
               </div>
             </div>
 
@@ -300,8 +300,8 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                   onClick={() => setDeliveryOption('retirada')}
                   className={`py-2 px-2 rounded-xl text-[11px] border text-center transition-all ${
                     deliveryOption === 'retirada'
-                      ? 'bg-[#D4AF37] text-[#1F120E] font-semibold border-[#D4AF37]'
-                      : 'bg-[#2C1A14] text-[#E8DFD5]/60 border-[#2C1A14]'
+                      ? 'bg-[#D2A56A] text-[#1F120E] font-semibold border-[#D2A56A]'
+                      : 'bg-[#541927] text-[#E8DFD5]/60 border-[#541927]'
                   }`}
                 >
                   Retirada
@@ -311,8 +311,8 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                   onClick={() => setDeliveryOption('entrega')}
                   className={`py-2 px-2 rounded-xl text-[11px] border text-center transition-all ${
                     deliveryOption === 'entrega'
-                      ? 'bg-[#D4AF37] text-[#1F120E] font-semibold border-[#D4AF37]'
-                      : 'bg-[#2C1A14] text-[#E8DFD5]/60 border-[#2C1A14]'
+                      ? 'bg-[#D2A56A] text-[#1F120E] font-semibold border-[#D2A56A]'
+                      : 'bg-[#541927] text-[#E8DFD5]/60 border-[#541927]'
                   }`}
                 >
                   Delivery
@@ -328,21 +328,21 @@ export const OrderModal: React.FC<OrderModalProps> = ({
               placeholder="Escreva detalhes de personalização, alergias ou mensagem para o cartão de presente..."
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full bg-[#2C1A14] border border-[#D4AF37]/30 rounded-xl p-2.5 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/40 focus:outline-none focus:border-[#D4AF37]"
+              className="w-full bg-[#541927] border border-[#D2A56A]/30 rounded-xl p-2.5 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/40 focus:outline-none focus:border-[#D2A56A]"
             />
           </div>
 
           {/* Store WhatsApp Target Input Section */}
-          <div className="pt-2 border-t border-[#2C1A14]">
+          <div className="pt-2 border-t border-[#541927]">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-medium text-[#D4AF37] flex items-center">
+              <span className="text-[11px] font-medium text-[#D2A56A] flex items-center">
                 <Phone className="w-3 h-3 mr-1" />
                 Destinatário do Pedido: <strong className="text-[#FAF7F2] ml-1">+{storeWhatsapp.replace(/\D/g, '')}</strong>
               </span>
               <button
                 type="button"
                 onClick={() => setShowPhoneConfig(!showPhoneConfig)}
-                className="text-[10px] text-[#E8DFD5]/60 hover:text-[#D4AF37] underline flex items-center"
+                className="text-[10px] text-[#E8DFD5]/60 hover:text-[#D2A56A] underline flex items-center"
               >
                 <Settings2 className="w-3 h-3 mr-1" />
                 {showPhoneConfig ? 'Ocultar' : 'Configurar número'}
@@ -350,7 +350,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
             </div>
 
             {(showPhoneConfig || phoneError) && (
-              <div className="mb-3 p-3 rounded-xl bg-[#2C1A14] border border-[#D4AF37]/40 space-y-2 animate-fadeIn text-left">
+              <div className="mb-3 p-3 rounded-xl bg-[#541927] border border-[#D2A56A]/40 space-y-2 animate-fadeIn text-left">
                 <label className="block text-[10px] text-[#E8DFD5]/80">
                   Número do WhatsApp da Encanto Gourmet (com código de país, ex: 351960158850):
                 </label>
@@ -365,7 +365,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                       localStorage.setItem('encanto_store_whatsapp', val);
                       setPhoneError(false);
                     }}
-                    className="flex-1 bg-[#1F120E] border border-[#D4AF37]/40 rounded-lg p-2 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/40 focus:outline-none focus:border-[#D4AF37]"
+                    className="flex-1 bg-[#1F120E] border border-[#D2A56A]/40 rounded-lg p-2 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/40 focus:outline-none focus:border-[#D2A56A]"
                   />
                   <button
                     type="button"
@@ -374,13 +374,13 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                       localStorage.setItem('encanto_store_whatsapp', WHATSAPP_NUMBER_PLACEHOLDER);
                       setPhoneError(false);
                     }}
-                    className="px-2.5 py-1 text-[10px] bg-[#1F120E] hover:bg-[#D4AF37] text-[#FAF7F2] hover:text-[#1F120E] border border-[#D4AF37]/40 rounded-lg transition-colors shrink-0"
+                    className="px-2.5 py-1 text-[10px] bg-[#1F120E] hover:bg-[#D2A56A] text-[#FAF7F2] hover:text-[#1F120E] border border-[#D2A56A]/40 rounded-lg transition-colors shrink-0"
                   >
                     Restaurar Padrão
                   </button>
                 </div>
                 {phoneError && (
-                  <p className="text-[10px] text-amber-300">
+                  <p className="text-[10px] text-[#D2A56A]">
                     ⚠️ Por favor, informe um número de WhatsApp válido (ex: 351960158850).
                   </p>
                 )}
@@ -388,7 +388,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
             )}
 
             {/* Note explaining WhatsApp self-chat behavior */}
-            <div className="mb-3 p-2.5 rounded-xl bg-[#2C1A14]/70 border border-[#D4AF37]/20 text-[10.5px] text-[#E8DFD5]/80 leading-relaxed">
+            <div className="mb-3 p-2.5 rounded-xl bg-[#541927]/70 border border-[#D2A56A]/20 text-[10.5px] text-[#E8DFD5]/80 leading-relaxed">
               💡 <strong>Dica de Teste:</strong> Se estiver a testar no próprio telemóvel registado com o número <strong>+351 960 158 850</strong>, o WhatsApp abre a conversa com <i>Você (consigo mesmo)</i>. Quando um <strong>cliente real</strong> clica no botão, o WhatsApp abre o chat direto com o seu ateliê!
             </div>
 
@@ -406,7 +406,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
               <button
                 type="button"
                 onClick={handleCopySummary}
-                className="sm:col-span-4 py-3.5 px-3 text-xs font-medium text-[#FAF7F2] bg-[#2C1A14] hover:bg-[#D4AF37] hover:text-[#1F120E] border border-[#D4AF37]/30 rounded-xl transition-all flex items-center justify-center space-x-1.5"
+                className="sm:col-span-4 py-3.5 px-3 text-xs font-medium text-[#FAF7F2] bg-[#541927] hover:bg-[#D2A56A] hover:text-[#1F120E] border border-[#D2A56A]/30 rounded-xl transition-all flex items-center justify-center space-x-1.5"
                 title="Copiar o texto formatado da encomenda"
               >
                 {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}

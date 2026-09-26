@@ -26,22 +26,22 @@ export const Benefits: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#1F120E] text-[#FAF7F2] relative overflow-hidden border-y border-[#D4AF37]/20">
+    <section className="py-24 bg-[#1F120E] text-[#FAF7F2] relative overflow-hidden border-y border-[#D2A56A]/20">
       
       {/* Subtle Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4AF37]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D2A56A]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Title */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D4AF37] block mb-2">
+          <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D2A56A] block mb-2">
             A Nossa Experiência
           </span>
           <h2 className="font-serif-display text-3xl sm:text-4xl md:text-5xl font-light text-[#FAF7F2]">
             Por que a Encanto Gourmet é única?
           </h2>
-          <div className="mt-4 w-16 h-[1px] bg-[#D4AF37] mx-auto" />
+          <div className="mt-4 w-16 h-[1px] bg-[#D2A56A] mx-auto" />
         </div>
 
         {/* 4 Benefits Pillars Grid */}
@@ -51,15 +51,15 @@ export const Benefits: React.FC = () => {
             return (
               <div
                 key={index}
-                className="group bg-[#2C1A14]/60 p-8 rounded-2xl border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 transition-all duration-300 flex flex-col justify-between"
+                className="group bg-[#541927]/60 p-8 rounded-2xl border border-[#D2A56A]/20 hover:border-[#D2A56A]/60 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   {/* Icon Box */}
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#D4AF37]/20 to-[#1F120E] border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#D2A56A]/20 to-[#1F120E] border border-[#D2A56A]/40 flex items-center justify-center text-[#D2A56A] mb-6 group-hover:scale-110 transition-transform">
                     <Icon className="w-6 h-6" />
                   </div>
 
-                  <h3 className="font-serif text-xl font-semibold text-[#FAF7F2] mb-3 group-hover:text-[#E5C378] transition-colors">
+                  <h3 className="font-serif text-xl font-semibold text-[#FAF7F2] mb-3 group-hover:text-[#D2A56A] transition-colors">
                     {item.title}
                   </h3>
 
@@ -68,9 +68,9 @@ export const Benefits: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-[#FAF7F2]/10 flex items-center justify-between text-[10px] uppercase tracking-widest text-[#D4AF37]">
+                <div className="mt-6 pt-4 border-t border-[#FAF7F2]/10 flex items-center justify-between text-[10px] uppercase tracking-widest text-[#D2A56A]">
                   <span>Padrão Gourmet</span>
-                  <Sparkles className="w-3 h-3 text-[#D4AF37]" />
+                  <Sparkles className="w-3 h-3 text-[#D2A56A]" />
                 </div>
               </div>
             );

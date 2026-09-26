@@ -52,7 +52,7 @@ export const LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#2C1A14] font-sans selection:bg-[#D4AF37]/20 selection:text-[#2C1A14]">
+    <div className="min-h-screen bg-[#FAF7F2] text-[#541927] font-sans selection:bg-[#D2A56A]/20 selection:text-[#541927]">
       {/* Top Header Navigation */}
       <Navbar onOpenOrderModal={handleOpenGeneralOrder} />
 

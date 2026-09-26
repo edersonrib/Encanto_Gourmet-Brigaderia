@@ -108,19 +108,19 @@ export const AdminProductsList: React.FC = () => {
             placeholder="Buscar por nome, descrição ou categoria..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#170D0B] border border-[#2C1A14] focus:border-[#D4AF37] rounded-xl py-2.5 pl-10 pr-4 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
+            className="w-full bg-[#170D0B] border border-[#541927] focus:border-[#D2A56A] rounded-xl py-2.5 pl-10 pr-4 text-xs text-[#FAF7F2] placeholder-[#E8DFD5]/30 focus:outline-none transition-colors"
           />
         </div>
 
         {/* Filter Pills & Add Button */}
         <div className="flex flex-wrap items-center gap-2">
           
-          <div className="inline-flex p-1 bg-[#170D0B] border border-[#2C1A14] rounded-xl text-xs">
+          <div className="inline-flex p-1 bg-[#170D0B] border border-[#541927] rounded-xl text-xs">
             <button
               onClick={() => setStatusFilter('all')}
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 statusFilter === 'all'
-                  ? 'bg-[#2C1A14] text-[#D4AF37] font-semibold'
+                  ? 'bg-[#541927] text-[#D2A56A] font-semibold'
                   : 'text-[#E8DFD5]/60 hover:text-[#FAF7F2]'
               }`}
             >
@@ -130,7 +130,7 @@ export const AdminProductsList: React.FC = () => {
               onClick={() => setStatusFilter('active')}
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 statusFilter === 'active'
-                  ? 'bg-[#2C1A14] text-[#D4AF37] font-semibold'
+                  ? 'bg-[#541927] text-[#D2A56A] font-semibold'
                   : 'text-[#E8DFD5]/60 hover:text-[#FAF7F2]'
               }`}
             >
@@ -140,7 +140,7 @@ export const AdminProductsList: React.FC = () => {
               onClick={() => setStatusFilter('inactive')}
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 statusFilter === 'inactive'
-                  ? 'bg-[#2C1A14] text-[#D4AF37] font-semibold'
+                  ? 'bg-[#541927] text-[#D2A56A] font-semibold'
                   : 'text-[#E8DFD5]/60 hover:text-[#FAF7F2]'
               }`}
             >
@@ -150,7 +150,7 @@ export const AdminProductsList: React.FC = () => {
               onClick={() => setStatusFilter('featured')}
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 statusFilter === 'featured'
-                  ? 'bg-[#2C1A14] text-[#D4AF37] font-semibold'
+                  ? 'bg-[#541927] text-[#D2A56A] font-semibold'
                   : 'text-[#E8DFD5]/60 hover:text-[#FAF7F2]'
               }`}
             >
@@ -160,7 +160,7 @@ export const AdminProductsList: React.FC = () => {
 
           <Link
             to="/admin/products/new"
-            className="px-4 py-2.5 bg-[#D4AF37] hover:bg-[#C59B27] text-[#1F120E] font-semibold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center space-x-1.5 shrink-0"
+            className="px-4 py-2.5 bg-[#D2A56A] hover:bg-[#C2955B] text-[#1F120E] font-semibold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center space-x-1.5 shrink-0"
           >
             <Plus className="w-4 h-4" />
             <span>Novo Produto</span>
@@ -187,11 +187,11 @@ export const AdminProductsList: React.FC = () => {
       )}
 
       {/* Products Table Container */}
-      <div className="bg-[#170D0B] border border-[#2C1A14] rounded-2xl overflow-hidden shadow-2xl">
+      <div className="bg-[#170D0B] border border-[#541927] rounded-2xl overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="bg-[#2C1A14]/50 border-b border-[#2C1A14] text-[#D4AF37] uppercase tracking-wider text-[10px] font-semibold">
+              <tr className="bg-[#541927]/50 border-b border-[#541927] text-[#D2A56A] uppercase tracking-wider text-[10px] font-semibold">
                 <th className="py-3.5 px-4">Imagem</th>
                 <th className="py-3.5 px-4">Produto</th>
                 <th className="py-3.5 px-4">Categoria</th>
@@ -202,7 +202,7 @@ export const AdminProductsList: React.FC = () => {
                 <th className="py-3.5 px-4 text-right">Ações</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#2C1A14]">
+            <tbody className="divide-y divide-[#541927]">
               {loading ? (
                 <tr>
                   <td colSpan={8} className="py-12 text-center text-[#E8DFD5]/60">
@@ -223,7 +223,7 @@ export const AdminProductsList: React.FC = () => {
                   >
                     {/* Thumbnail Image */}
                     <td className="py-3 px-4">
-                      <div className="w-12 h-12 rounded-xl overflow-hidden bg-[#1F120E] border border-[#D4AF37]/20 shrink-0">
+                      <div className="w-12 h-12 rounded-xl overflow-hidden bg-[#1F120E] border border-[#D2A56A]/20 shrink-0">
                         <img
                           src={p.image}
                           alt={p.name}
@@ -237,11 +237,11 @@ export const AdminProductsList: React.FC = () => {
                       <div className="font-semibold text-[#FAF7F2] text-xs">
                         {p.name}
                       </div>
-                      <div className="text-[10px] text-[#D4AF37] italic">
+                      <div className="text-[10px] text-[#D2A56A] italic">
                         {p.tag || 'Sabor Gourmet'}
                       </div>
                       {p.badge && (
-                        <span className="inline-block mt-1 px-2 py-0.5 rounded bg-[#2C1A14] text-[#D4AF37] text-[9px] uppercase font-semibold border border-[#D4AF37]/30">
+                        <span className="inline-block mt-1 px-2 py-0.5 rounded bg-[#541927] text-[#D2A56A] text-[9px] uppercase font-semibold border border-[#D2A56A]/30">
                           {p.badge}
                         </span>
                       )}
@@ -260,8 +260,8 @@ export const AdminProductsList: React.FC = () => {
                     {/* Featured */}
                     <td className="py-3 px-4 text-center">
                       {p.featured ? (
-                        <span className="inline-flex items-center text-amber-400" title="Produto em destaque">
-                          <Star className="w-4 h-4 fill-amber-400" />
+                        <span className="inline-flex items-center text-[#D2A56A]" title="Produto em destaque">
+                          <Star className="w-4 h-4 fill-[#D2A56A]" />
                         </span>
                       ) : (
                         <span className="text-[#E8DFD5]/30">—</span>
@@ -302,7 +302,7 @@ export const AdminProductsList: React.FC = () => {
                       <div className="flex items-center justify-end space-x-1">
                         <Link
                           to={`/admin/products/${p.id}/edit`}
-                          className="p-2 text-[#E8DFD5]/70 hover:text-[#D4AF37] hover:bg-[#2C1A14] rounded-lg transition-colors"
+                          className="p-2 text-[#E8DFD5]/70 hover:text-[#D2A56A] hover:bg-[#541927] rounded-lg transition-colors"
                           title="Editar informações e foto"
                         >
                           <Edit2 className="w-4 h-4" />
@@ -339,7 +339,7 @@ export const AdminProductsList: React.FC = () => {
               Tem certeza que deseja excluir permanentemente o produto <strong>"{deleteModalProduct.name}"</strong>?
             </p>
 
-            <p className="text-[11px] text-[#E8DFD5]/60 bg-[#1F120E] p-3 rounded-xl border border-[#2C1A14] mb-6">
+            <p className="text-[11px] text-[#E8DFD5]/60 bg-[#1F120E] p-3 rounded-xl border border-[#541927] mb-6">
               ⚠️ Esta ação removerá os dados no banco e apagará a imagem correspondente no Supabase Storage. Esta operação não pode ser desfeita.
             </p>
 

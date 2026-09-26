@@ -53,15 +53,15 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
     : productsList.filter(p => p.flavorCategory === selectedCategory);
 
   return (
-    <section id="produtos" className="py-24 bg-[#FAF7F2] text-[#2C1A14] relative">
+    <section id="produtos" className="py-24 bg-[#FAF7F2] text-[#541927] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D4AF37] block mb-2">
+          <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D2A56A] block mb-2">
             Catálogo Exclusivo
           </span>
-          <h2 className="font-serif-display text-4xl sm:text-5xl font-light text-[#2C1A14] mb-4">
+          <h2 className="font-serif-display text-4xl sm:text-5xl font-light text-[#541927] mb-4">
             Conheça os nossos encantos.
           </h2>
           <p className="text-base sm:text-lg text-[#6E574F] font-light">
@@ -69,13 +69,13 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
           </p>
 
           {/* Toggle between Menu View and Custom Gift Box Builder */}
-          <div className="mt-8 inline-flex p-1.5 rounded-full bg-[#E8DFD5]/60 border border-[#D4AF37]/30 shadow-inner">
+          <div className="mt-8 inline-flex p-1.5 rounded-full bg-[#E8DFD5]/60 border border-[#D2A56A]/30 shadow-inner">
             <button
               onClick={() => setActiveTab('catalog')}
               className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 ${
                 activeTab === 'catalog'
-                  ? 'bg-[#1F120E] text-[#D4AF37] shadow-md'
-                  : 'text-[#523C33] hover:text-[#2C1A14]'
+                  ? 'bg-[#1F120E] text-[#D2A56A] shadow-md'
+                  : 'text-[#523C33] hover:text-[#541927]'
               }`}
               id="tab-catalog"
             >
@@ -85,12 +85,12 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
               onClick={() => setActiveTab('box_builder')}
               className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 flex items-center space-x-2 ${
                 activeTab === 'box_builder'
-                  ? 'bg-[#1F120E] text-[#D4AF37] shadow-md'
-                  : 'text-[#523C33] hover:text-[#2C1A14]'
+                  ? 'bg-[#1F120E] text-[#D2A56A] shadow-md'
+                  : 'text-[#523C33] hover:text-[#541927]'
               }`}
               id="tab-box-builder"
             >
-              <Gift className="w-4 h-4 text-[#D4AF37]" />
+              <Gift className="w-4 h-4 text-[#D2A56A]" />
               <span>Montar Caixa de Presente</span>
             </button>
           </div>
@@ -108,7 +108,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
                   onClick={() => setSelectedCategory(cat.id)}
                   className={`px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-all duration-300 ${
                     selectedCategory === cat.id
-                      ? 'bg-[#2C1A14] text-[#FAF7F2] shadow-sm'
+                      ? 'bg-[#541927] text-[#FAF7F2] shadow-sm'
                       : 'bg-white/80 text-[#6E574F] hover:bg-[#E8DFD5] border border-[#E8DFD5]'
                   }`}
                 >
@@ -120,7 +120,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
             {/* Loading Spinner */}
             {loading && (
               <div className="text-center py-8 text-xs text-[#6E574F] flex items-center justify-center space-x-2">
-                <RefreshCw className="w-4 h-4 animate-spin text-[#D4AF37]" />
+                <RefreshCw className="w-4 h-4 animate-spin text-[#D2A56A]" />
                 <span>Atualizando produtos com o banco de dados...</span>
               </div>
             )}
@@ -128,7 +128,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
             {/* Empty State */}
             {!loading && filteredProducts.length === 0 && (
               <div className="text-center py-12 text-[#6E574F] text-sm bg-white rounded-2xl border border-[#E8DFD5] p-8 max-w-md mx-auto">
-                <p className="font-serif text-lg font-bold text-[#2C1A14] mb-2">
+                <p className="font-serif text-lg font-bold text-[#541927] mb-2">
                   Nenhum produto disponível nesta categoria no momento.
                 </p>
                 <p className="text-xs">
@@ -142,7 +142,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
               {filteredProducts.map((product) => (
                 <div
                   key={product.id}
-                  className="group bg-white rounded-2xl overflow-hidden border border-[#E8DFD5] hover:border-[#D4AF37]/60 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between"
+                  className="group bg-white rounded-2xl overflow-hidden border border-[#E8DFD5] hover:border-[#D2A56A]/60 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between"
                 >
                   <div>
                     {/* Image Container with Badge */}
@@ -156,14 +156,14 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                       
                       {product.badge && (
-                        <div className="absolute top-3 left-3 bg-[#1F120E]/90 text-[#D4AF37] text-[10px] uppercase font-semibold tracking-widest px-3 py-1 rounded-full border border-[#D4AF37]/30 backdrop-blur-sm">
+                        <div className="absolute top-3 left-3 bg-[#1F120E]/90 text-[#D2A56A] text-[10px] uppercase font-semibold tracking-widest px-3 py-1 rounded-full border border-[#D2A56A]/30 backdrop-blur-sm">
                           {product.badge}
                         </div>
                       )}
 
                       <button
                         onClick={() => setSelectedProductForDetail(product)}
-                        className="absolute bottom-3 right-3 p-2 bg-white/90 text-[#2C1A14] rounded-full shadow-md hover:bg-[#2C1A14] hover:text-[#D4AF37] transition-colors"
+                        className="absolute bottom-3 right-3 p-2 bg-white/90 text-[#541927] rounded-full shadow-md hover:bg-[#541927] hover:text-[#D2A56A] transition-colors"
                         title="Ver detalhes dos ingredientes"
                       >
                         <Info className="w-4 h-4" />
@@ -172,10 +172,10 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
 
                     {/* Content */}
                     <div className="p-5">
-                      <span className="text-[10px] uppercase font-semibold tracking-widest text-[#D4AF37] block mb-1">
+                      <span className="text-[10px] uppercase font-semibold tracking-widest text-[#D2A56A] block mb-1">
                         {product.tag || 'Sabor Gourmet'}
                       </span>
-                      <h3 className="font-serif text-xl font-bold text-[#2C1A14] mb-2 group-hover:text-[#6E473B] transition-colors">
+                      <h3 className="font-serif text-xl font-bold text-[#541927] mb-2 group-hover:text-[#7A283B] transition-colors">
                         {product.name}
                       </h3>
                       <p className="text-xs text-[#6E574F] font-light leading-relaxed line-clamp-3 mb-4">
@@ -191,7 +191,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
                     </div>
                     <button
                       onClick={() => onSelectProductToOrder(product)}
-                      className="w-full py-2.5 px-4 text-xs font-semibold uppercase tracking-wider text-[#FAF7F2] bg-[#2C1A14] hover:bg-[#D4AF37] hover:text-[#1F120E] rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 group/btn"
+                      className="w-full py-2.5 px-4 text-xs font-semibold uppercase tracking-wider text-[#FAF7F2] bg-[#541927] hover:bg-[#D2A56A] hover:text-[#1F120E] rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 group/btn"
                     >
                       <ShoppingBag className="w-3.5 h-3.5" />
                       <span>Encomendar</span>
@@ -218,7 +218,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
           <div className="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 border border-[#E8DFD5] shadow-2xl relative">
             <button
               onClick={() => setSelectedProductForDetail(null)}
-              className="absolute top-4 right-4 text-[#6E574F] hover:text-[#2C1A14] p-1"
+              className="absolute top-4 right-4 text-[#6E574F] hover:text-[#541927] p-1"
             >
               ✕
             </button>
@@ -226,13 +226,13 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
               <ProductImage
                 src={selectedProductForDetail.image}
                 alt={selectedProductForDetail.alt || `Brigadeiro Gourmet ${selectedProductForDetail.name}`}
-                className="w-20 h-20 rounded-xl object-cover border border-[#D4AF37]/30"
+                className="w-20 h-20 rounded-xl object-cover border border-[#D2A56A]/30"
               />
               <div>
-                <span className="text-[10px] uppercase font-semibold text-[#D4AF37] tracking-widest">
+                <span className="text-[10px] uppercase font-semibold text-[#D2A56A] tracking-widest">
                   {selectedProductForDetail.tag || 'Sabor Gourmet'}
                 </span>
-                <h3 className="font-serif text-2xl font-bold text-[#2C1A14]">
+                <h3 className="font-serif text-2xl font-bold text-[#541927]">
                   {selectedProductForDetail.name}
                 </h3>
               </div>
@@ -243,7 +243,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
             </p>
 
             <div className="bg-[#FAF7F2] p-4 rounded-xl border border-[#E8DFD5] mb-6 space-y-2">
-              <span className="text-xs font-semibold uppercase text-[#2C1A14] tracking-wider block">
+              <span className="text-xs font-semibold uppercase text-[#541927] tracking-wider block">
                 Ingredientes & Notas Gastronômicas:
               </span>
               <p className="text-xs text-[#6E574F] italic">
@@ -254,7 +254,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
             <div className="flex justify-end space-x-3">
               <button
                 onClick={() => setSelectedProductForDetail(null)}
-                className="px-4 py-2 text-xs font-semibold text-[#6E574F] hover:text-[#2C1A14]"
+                className="px-4 py-2 text-xs font-semibold text-[#6E574F] hover:text-[#541927]"
               >
                 Fechar
               </button>
@@ -264,7 +264,7 @@ export const Products: React.FC<ProductsProps> = ({ onSelectProductToOrder, onOr
                   setSelectedProductForDetail(null);
                   onSelectProductToOrder(prod);
                 }}
-                className="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#1F120E] bg-[#D4AF37] hover:bg-[#C59B27] rounded-xl shadow-md"
+                className="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#1F120E] bg-[#D2A56A] hover:bg-[#C2955B] rounded-xl shadow-md"
               >
                 Encomendar Este Sabor
               </button>

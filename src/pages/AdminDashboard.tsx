@@ -60,12 +60,12 @@ export const AdminDashboard: React.FC = () => {
       {/* Metrics Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
         
-        <div className="bg-[#170D0B] border border-[#2C1A14] rounded-2xl p-6 relative overflow-hidden group hover:border-[#D4AF37]/50 transition-all">
+        <div className="bg-[#170D0B] border border-[#541927] rounded-2xl p-6 relative overflow-hidden group hover:border-[#D2A56A]/50 transition-all">
           <div className="flex items-center justify-between mb-4">
             <span className="text-xs uppercase font-semibold text-[#E8DFD5]/70 tracking-wider">
               Total de Produtos
             </span>
-            <div className="w-10 h-10 rounded-xl bg-[#2C1A14] flex items-center justify-center text-[#D4AF37]">
+            <div className="w-10 h-10 rounded-xl bg-[#541927] flex items-center justify-center text-[#D2A56A]">
               <ShoppingBag className="w-5 h-5" />
             </div>
           </div>
@@ -77,7 +77,7 @@ export const AdminDashboard: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-[#170D0B] border border-[#2C1A14] rounded-2xl p-6 relative overflow-hidden group hover:border-emerald-500/50 transition-all">
+        <div className="bg-[#170D0B] border border-[#541927] rounded-2xl p-6 relative overflow-hidden group hover:border-emerald-500/50 transition-all">
           <div className="flex items-center justify-between mb-4">
             <span className="text-xs uppercase font-semibold text-[#E8DFD5]/70 tracking-wider">
               Produtos Ativos
@@ -94,19 +94,19 @@ export const AdminDashboard: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-[#170D0B] border border-[#2C1A14] rounded-2xl p-6 relative overflow-hidden group hover:border-[#D4AF37]/50 transition-all">
+        <div className="bg-[#170D0B] border border-[#541927] rounded-2xl p-6 relative overflow-hidden group hover:border-[#D2A56A]/50 transition-all">
           <div className="flex items-center justify-between mb-4">
             <span className="text-xs uppercase font-semibold text-[#E8DFD5]/70 tracking-wider">
               Em Destaque
             </span>
-            <div className="w-10 h-10 rounded-xl bg-[#2C1A14] flex items-center justify-center text-[#D4AF37]">
+            <div className="w-10 h-10 rounded-xl bg-[#541927] flex items-center justify-center text-[#D2A56A]">
               <Sparkles className="w-5 h-5" />
             </div>
           </div>
           <div className="font-serif text-3xl font-bold text-[#FAF7F2] mb-1">
             {loading ? '...' : featuredCount}
           </div>
-          <p className="text-[11px] text-[#D4AF37]/80">
+          <p className="text-[11px] text-[#D2A56A]/80">
             Com selo exclusivo
           </p>
         </div>
@@ -115,10 +115,10 @@ export const AdminDashboard: React.FC = () => {
 
       {/* Quick Action Banner */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        <div className="bg-gradient-to-r from-[#2C1A14] to-[#1F120E] border border-[#D4AF37]/30 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="bg-gradient-to-r from-[#541927] to-[#1F120E] border border-[#D2A56A]/30 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <h3 className="font-serif text-base font-bold text-[#FAF7F2] flex items-center">
-              <Sparkles className="w-4 h-4 text-[#D4AF37] mr-2" />
+              <Sparkles className="w-4 h-4 text-[#D2A56A] mr-2" />
               Adicionar Novo Produto
             </h3>
             <p className="text-[11px] text-[#E8DFD5]/80 mt-0.5 font-light">
@@ -127,17 +127,17 @@ export const AdminDashboard: React.FC = () => {
           </div>
           <Link
             to="/admin/products/new"
-            className="px-4 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#C59B27] text-[#1F120E] font-semibold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center space-x-1.5 shrink-0"
+            className="px-4 py-2.5 rounded-xl bg-[#D2A56A] hover:bg-[#C2955B] text-[#1F120E] font-semibold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center space-x-1.5 shrink-0"
           >
             <PlusCircle className="w-3.5 h-3.5" />
             <span>Cadastrar Sabor</span>
           </Link>
         </div>
 
-        <div className="bg-gradient-to-r from-[#2C1A14] to-[#1F120E] border border-[#D4AF37]/30 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="bg-gradient-to-r from-[#541927] to-[#1F120E] border border-[#D2A56A]/30 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <h3 className="font-serif text-base font-bold text-[#FAF7F2] flex items-center">
-              <Gift className="w-4 h-4 text-[#D4AF37] mr-2" />
+              <Gift className="w-4 h-4 text-[#D2A56A] mr-2" />
               Configurar Caixas de Presentes
             </h3>
             <p className="text-[11px] text-[#E8DFD5]/80 mt-0.5 font-light">
@@ -146,7 +146,7 @@ export const AdminDashboard: React.FC = () => {
           </div>
           <Link
             to="/admin/boxes"
-            className="px-4 py-2.5 rounded-xl bg-[#2C1A14] hover:bg-[#382119] text-[#FAF7F2] hover:text-[#D4AF37] border border-[#D4AF37]/40 font-semibold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center space-x-1.5 shrink-0"
+            className="px-4 py-2.5 rounded-xl bg-[#541927] hover:bg-[#541927] text-[#FAF7F2] hover:text-[#D2A56A] border border-[#D2A56A]/40 font-semibold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center space-x-1.5 shrink-0"
           >
             <Gift className="w-3.5 h-3.5" />
             <span>Gerenciar Caixas</span>
@@ -155,14 +155,14 @@ export const AdminDashboard: React.FC = () => {
       </div>
 
       {/* Recent Products List */}
-      <div className="bg-[#170D0B] border border-[#2C1A14] rounded-2xl p-6">
-        <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#2C1A14]">
+      <div className="bg-[#170D0B] border border-[#541927] rounded-2xl p-6">
+        <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#541927]">
           <h3 className="font-serif text-base font-bold text-[#FAF7F2]">
             Catálogo Recente
           </h3>
           <Link
             to="/admin/products"
-            className="text-xs text-[#D4AF37] hover:underline flex items-center space-x-1"
+            className="text-xs text-[#D2A56A] hover:underline flex items-center space-x-1"
           >
             <span>Ver Todos ({totalCount})</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -182,13 +182,13 @@ export const AdminDashboard: React.FC = () => {
             {products.slice(0, 5).map((prod) => (
               <div
                 key={prod.id}
-                className="flex items-center justify-between p-3.5 rounded-xl bg-[#1F120E] border border-[#2C1A14] hover:border-[#D4AF37]/30 transition-all"
+                className="flex items-center justify-between p-3.5 rounded-xl bg-[#1F120E] border border-[#541927] hover:border-[#D2A56A]/30 transition-all"
               >
                 <div className="flex items-center space-x-3 min-w-0">
                   <img
                     src={prod.image}
                     alt={prod.name}
-                    className="w-12 h-12 rounded-lg object-cover border border-[#D4AF37]/20 shrink-0"
+                    className="w-12 h-12 rounded-lg object-cover border border-[#D2A56A]/20 shrink-0"
                   />
                   <div className="min-w-0">
                     <h4 className="font-medium text-xs text-[#FAF7F2] truncate">
@@ -214,7 +214,7 @@ export const AdminDashboard: React.FC = () => {
 
                   <Link
                     to={`/admin/products/${prod.id}/edit`}
-                    className="p-1.5 text-[#E8DFD5]/70 hover:text-[#D4AF37] hover:bg-[#2C1A14] rounded-lg transition-colors"
+                    className="p-1.5 text-[#E8DFD5]/70 hover:text-[#D2A56A] hover:bg-[#541927] rounded-lg transition-colors"
                     title="Editar produto"
                   >
                     <Edit className="w-4 h-4" />

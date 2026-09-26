@@ -9,7 +9,7 @@ export const Testimonials: React.FC = () => {
         
         {/* Section Title */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D4AF37] block mb-2">
+          <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D2A56A] block mb-2">
             Avaliações de Clientes
           </span>
           <h2 className="font-serif-display text-3xl sm:text-4xl md:text-5xl font-light text-[#FAF7F2]">
@@ -18,7 +18,7 @@ export const Testimonials: React.FC = () => {
           <p className="text-xs text-[#E8DFD5]/60 mt-2 italic">
             Feedback e experiências vivenciadas por nossos clientes em datas especiais.
           </p>
-          <div className="mt-4 w-12 h-[1px] bg-[#D4AF37] mx-auto" />
+          <div className="mt-4 w-12 h-[1px] bg-[#D2A56A] mx-auto" />
         </div>
 
         {/* 3 Testimonials Cards */}
@@ -26,15 +26,15 @@ export const Testimonials: React.FC = () => {
           {TESTIMONIALS.map((item) => (
             <div
               key={item.id}
-              className="bg-[#2C1A14] p-8 rounded-2xl border border-[#D4AF37]/20 shadow-xl flex flex-col justify-between relative"
+              className="bg-[#541927] p-8 rounded-2xl border border-[#D2A56A]/20 shadow-xl flex flex-col justify-between relative"
             >
-              <Quote className="w-8 h-8 text-[#D4AF37]/30 absolute top-6 right-6" />
+              <Quote className="w-8 h-8 text-[#D2A56A]/30 absolute top-6 right-6" />
 
               <div>
                 {/* Rating Stars */}
-                <div className="flex items-center space-x-1 mb-4 text-[#D4AF37]">
+                <div className="flex items-center space-x-1 mb-4 text-[#D2A56A]">
                   {[...Array(item.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#D4AF37]" />
+                    <Star key={i} className="w-4 h-4 fill-[#D2A56A]" />
                   ))}
                 </div>
 
@@ -44,12 +44,12 @@ export const Testimonials: React.FC = () => {
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#D4AF37]/20 flex items-center justify-between">
+              <div className="pt-4 border-t border-[#D2A56A]/20 flex items-center justify-between">
                 <div>
                   <h3 className="font-serif text-base font-semibold text-[#FAF7F2]">
                     {item.author}
                   </h3>
-                  <span className="text-[11px] text-[#D4AF37] block font-medium">
+                  <span className="text-[11px] text-[#D2A56A] block font-medium">
                     {item.eventType}
                   </span>
                 </div>

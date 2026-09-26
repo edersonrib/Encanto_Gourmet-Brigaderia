@@ -12,7 +12,7 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = ({ 
     <div className="fixed bottom-6 right-6 z-40 flex items-center space-x-3">
       {/* Tooltip Badge */}
       {tooltipVisible && (
-        <div className="hidden sm:flex items-center space-x-2 bg-[#1F120E] text-[#FAF7F2] text-xs py-2 px-3.5 rounded-2xl shadow-xl border border-[#D4AF37]/40 animate-fadeIn">
+        <div className="hidden sm:flex items-center space-x-2 bg-[#1F120E] text-[#FAF7F2] text-xs py-2 px-3.5 rounded-2xl shadow-xl border border-[#D2A56A]/40 animate-fadeIn">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
           <span className="font-medium text-[#FAF7F2]">Faça sua encomenda no WhatsApp</span>
           <button
