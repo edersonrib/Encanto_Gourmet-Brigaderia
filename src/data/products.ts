@@ -170,10 +170,10 @@ export const TESTIMONIALS: Testimonial[] = [
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
     id: 'post-1',
-    imageUrl: '/images/instagram/instagram-01.webp',
-    caption: 'Detalhes que encantam a alma e o paladar. Nosso brigadeiro Belga Tradicional com flocos de chocolate nobre. ✨',
-    likes: '248',
-    url: 'https://www.instagram.com/encantogourmet_brigadeiria/'
+    imageUrl: '/images/instagram/instagram-01.jpg',
+    caption: 'Demonstração real dos nossos tradicionais brigadeiros gourmet feitos à mão com puro chocolate. ✨',
+    likes: '70',
+    url: 'https://www.instagram.com/p/CeUK2oLKGZ9/'
   },
   {
     id: 'post-2',
